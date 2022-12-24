@@ -14,7 +14,7 @@
             <a class="nav-link" href="#">Features</a>
           </li>
           <li class="nav-item">
-            <router-link to="dashboard/product" class="nav-link">產品列表</router-link>
+            <router-link to="dashboard/products" class="nav-link">產品列表</router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" @click.prevent="logout">登出</a>
