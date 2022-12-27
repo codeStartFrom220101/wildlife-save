@@ -1,4 +1,5 @@
 <template>
+  <LoadingOverlay :active="isLoading"></LoadingOverlay>
   <div class="container mt-5">
     <form class="row justify-content-center">
       <div class="col-md-6">
@@ -40,17 +41,20 @@ export default {
     return {
       user: {
         username: '',
-        password: ''
+        password: '',
+        isLoading: false
       }
     }
   },
   methods: {
     signIn () {
+      this.isLoading = true
       const api = `${process.env.VUE_APP_API}/admin/signin`
       this.$http.post(api, this.user)
         .then((res) => {
           console.log(res)
           if (res.data.success) {
+            this.isLoading = false
             const { token, expired } = res.data
             document.cookie = `hexToken=${token}; expires=${new Date(expired)}`
             this.$router.push('dashboard')
