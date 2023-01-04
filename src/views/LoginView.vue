@@ -57,7 +57,7 @@ export default {
             this.isLoading = false
             const { token, expired } = res.data
             document.cookie = `hexToken=${token}; expires=${new Date(expired)}`
-            this.$router.push('dashboard')
+            this.$router.push('/dashboard')
           }
         })
     }
