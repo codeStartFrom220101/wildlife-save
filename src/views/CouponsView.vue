@@ -14,20 +14,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(coupon, key) in coupons" :key="key">
-        <td>{{ coupon.title }}</td>
-        <td>{{ coupon.percent }}</td>
+      <tr v-for="(item, key) in coupons" :key="key">
+        <td>{{ item.title }}</td>
+        <td>{{ item.percent }}</td>
         <td class="text-right">
-          {{ $filters.date(coupon.due_date) }}
+          {{ $filters.date(item.due_date) }}
         </td>
         <td>
-          <span v-if="coupon.is_enabled === 1" class="text-success">啟用</span>
+          <span v-if="item.is_enabled === 1" class="text-success">啟用</span>
           <span v-else class="text-muted">未起用</span>
         </td>
         <td>
           <div class="btn-group">
-            <button class="btn btn-outline-primary btn-sm" @click="openModal(false, coupon)">編輯</button>
-            <button class="btn btn-outline-danger btn-sm" @click="openDelModal(coupon)">刪除</button>
+            <button class="btn btn-outline-primary btn-sm" @click="openModal(false, item)">編輯</button>
+            <button class="btn btn-outline-danger btn-sm" @click="openDelModal(item)">刪除</button>
           </div>
         </td>
       </tr>
@@ -35,18 +35,19 @@
   </table>
   <CouponsModal ref="couponModal" @update-coupon="updateCoupon" :coupon="tempCoupon"></CouponsModal>
   <DelModal ref="delModal" :item="tempCoupon" @del-item="delCoupon"></DelModal>
-  <input type="date" id="dateTest" name="trip-start"
-      value="2018-07-22">
+  <Pagination :pages="pagination" @emit-pages="getCoupons"></Pagination>
 </template>
 
 <script>
 import CouponsModal from '@/components/CouponsModal.vue'
 import DelModal from '../components/DelModal.vue'
+import Pagination from '../components/PaginationC.vue'
 
 export default {
   components: {
     CouponsModal,
-    DelModal
+    DelModal,
+    Pagination
   },
   data () {
     return {
@@ -62,7 +63,7 @@ export default {
       isLoading: false
     }
   },
-  inject: ['emitter', 'pushMessageState'],
+  inject: ['pushMessageState'],
   methods: {
     getCoupons (page = 1) {
       this.isLoading = true
@@ -70,23 +71,25 @@ export default {
       this.$http.get(api)
         .then((res) => {
           if (res.data.success) {
-            console.log(res)
             this.isLoading = false
             this.coupons = res.data.coupons
             this.pagination = res.data.pagination
           }
         })
     },
-    openModal (isNew, coupon) {
+    openModal (isNew, item) {
       this.isNew = isNew
       if (!isNew) {
-        this.tempCoupon = coupon
+        this.tempCoupon = { ...item }
+      } else {
+        this.tempCoupon = {
+          due_date: new Date().getTime() / 1000
+        }
       }
       const couponComponent = this.$refs.couponModal
       couponComponent.showModal()
     },
     updateCoupon (item) {
-      console.log(item)
       this.tempCoupon = item
       const couponComponent = this.$refs.couponModal
       // 新增
@@ -101,24 +104,24 @@ export default {
         .then((res) => {
           this.getCoupons()
           if (httpMethod === 'post') {
-            this.pushMessageState(res, '新增')
+            this.pushMessageState(res, `新增優惠卷${this.tempCoupon.title ? `"${this.tempCoupon.title}"` : ''}`)
           } else {
-            this.pushMessageState(res)
+            this.pushMessageState(res, `編輯優惠卷"${this.tempCoupon.title}"`)
           }
         })
       couponComponent.hideModal()
     },
     openDelModal (item) {
       console.log(item)
-      this.tempProduct = { ...item }
+      this.tempCoupon = { ...item }
       const delComponent = this.$refs.delModal
       delComponent.showModal()
     },
     delCoupon () {
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempProduct.id}`
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempCoupon.id}`
       this.$http.delete(api)
         .then(res => {
-          this.pushMessageState(res, '刪除')
+          this.pushMessageState(res, `刪除優惠卷"${this.tempCoupon.title}"`)
           const delComponent = this.$refs.delModal
           delComponent.hideModal()
           this.getCoupons()
@@ -129,9 +132,4 @@ export default {
     this.getCoupons()
   }
 }
-
-const dateTest = document.querySelector('#dateTest')
-console.log(dateTest)
-console.log(dateTest.value)
-console.log(dateTest.valueAsNumber)
 </script>

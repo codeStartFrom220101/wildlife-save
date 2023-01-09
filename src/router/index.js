@@ -38,6 +38,21 @@ const routes = [
         component: () => import('../views/CouponsView.vue')
       }
     ]
+  },
+  {
+    path: '/userboard',
+    name: 'userboard',
+    component: () => import('../views/UserboardView.vue'),
+    children: [
+      {
+        path: 'cart',
+        component: () => import('../views/UserCart.vue')
+      },
+      {
+        path: 'product',
+        component: () => import('../views/UserProduct.vue')
+      }
+    ]
   }
 ]
 

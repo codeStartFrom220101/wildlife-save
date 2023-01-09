@@ -62,7 +62,7 @@ export default {
       isLoading: false
     }
   },
-  inject: ['emitter', 'pushMessageState'],
+  inject: ['pushMessageState'],
   methods: {
     getProducts (page = 1) {
       this.isLoading = true
@@ -87,7 +87,6 @@ export default {
       productComponent.showModal()
     },
     updateProduct (item) {
-      console.log(item)
       this.tempProduct = item
       const productComponent = this.$refs.productModal
       // 新增
@@ -102,15 +101,14 @@ export default {
         .then((res) => {
           this.getProducts()
           if (this.isNew) {
-            this.pushMessageState(res, '新增產品')
+            this.pushMessageState(res, `新增優惠卷${this.tempProduct.title ? `"${this.tempProduct.title}"` : ''}`)
           } else {
-            this.pushMessageState(res, '編輯產品')
+            this.pushMessageState(res, `編輯產品"${this.tempProduct.title}"`)
           }
         })
       productComponent.hideModal()
     },
     openDelModal (item) {
-      console.log(item)
       this.tempProduct = { ...item }
       const delComponent = this.$refs.delModal
       delComponent.showModal()
@@ -119,7 +117,7 @@ export default {
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`
       this.$http.delete(api)
         .then(res => {
-          this.pushMessageState(res, '刪除')
+          this.pushMessageState(res, `刪除產品"${this.tempProduct.title}"`)
           const delComponent = this.$refs.delModal
           delComponent.hideModal()
           this.getProducts()

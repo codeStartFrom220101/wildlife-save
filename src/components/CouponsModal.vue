@@ -65,7 +65,7 @@ export default {
       console.log(this.tempCoupon.due_date)
       const dateAndTime = new Date(this.tempCoupon.due_date * 1000)
         .toISOString().split('T')
-      this.due_date = dateAndTime
+      this.due_date = dateAndTime[0]
     },
     due_date () {
       this.tempCoupon.due_date = Math.floor(new Date(this.due_date) / 1000)
