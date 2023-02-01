@@ -1,19 +1,24 @@
 <template>
   <div class="banner">
     <div class="banner-bg"></div>
-    <video autoplay muted loop>
+    <video class="d-none d-md-block" autoplay muted loop>
       <source src="@/assets/video-1.mp4" type="video/mp4">
     </video>
-    <h2 class="position-absolute translate-middle text-primary display-4 text-center fw-bold lh-base">做個野外英雄<br>拯救野外大小生命</h2>
+    <video class="d-md-none" autoplay muted loop>
+      <source src="@/assets/video-mobile.mp4" type="video/mp4">
+    </video>
+    <div class="banner-text px-4 py-3 position-absolute translate-middle text-white fw-bold lh-base start-50 top-50 opacity-75 text-center">
+      <h2 class="py-2">反抗瀕臨絕種<br>
+      讓美麗的物種都能有活下去的機會</h2>
+      <button type="button" class="btn btn-secondary">
+        幫人類擦屁股
+        <font-awesome-icon icon="fa-solid fa-toilet-paper"/>
+      </button>
+    </div>
   </div>
 </template>
 
 <style>
-/* Reset CSS */
-*{
-  margin:0;
-  padding:0;
-}
 
 .banner{
   width: 100%;
@@ -28,7 +33,7 @@
   left: 0;
   bottom: 0;
   background: rgba(0,0,0, 0.2);
-  z-index: 2;
+  z-index: -1;
 }
 
 .banner video{
@@ -40,11 +45,10 @@
   object-fit: cover;
 }
 
-.banner h2 {
-  z-index: 5;
-  opacity: 0.7;
-  left: 20%;
-  top: 50%
+@media (min-width: 768px) {
+  .banner-text {
+    left: 20%;
+  }
 }
 
 </style>

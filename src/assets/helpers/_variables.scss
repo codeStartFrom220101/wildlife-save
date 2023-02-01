@@ -336,7 +336,7 @@ $escaped-characters: (
 
 $enable-caret:                true !default;
 $enable-rounded:              true !default;
-$enable-shadows:              false !default;
+$enable-shadows:              true !default;
 $enable-gradients:            false !default;
 $enable-transitions:          true !default;
 $enable-reduced-motion:       true !default;
@@ -389,6 +389,7 @@ $spacers: (
 // scss-docs-start position-map
 $position-values: (
   0: 0,
+  20: 20%,
   50: 50%,
   100: 100%
 ) !default;
@@ -507,8 +508,8 @@ $box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
 $box-shadow-inset:            inset 0 1px 2px rgba($black, .075) !default;
 // scss-docs-end box-shadow-variables
 
-$component-active-color:      $white !default;
-$component-active-bg:         $primary !default;
+$component-active-color:      $dark !default;
+$component-active-bg:         $warning !default;
 
 // scss-docs-start caret-variables
 $caret-width:                 .3em !default;

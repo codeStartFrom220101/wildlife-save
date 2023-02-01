@@ -1,8 +1,8 @@
 <template>
   <div class="wrap">
-    <nav class="navbar navbar-expand-lg navbar-white fixed-top navbar-bg" :class="{'bg-primary': navbarBg}">
-      <div class="container-fluid container">
-        <router-link to="/userboard" class="navbar-brand">
+    <nav class="navbar navbar-expand-lg navbar-white fixed-top navbar-bg p-0" :class="[{'bg-primary': navbarBg}, {'shadow-sm': !navbarBg}]">
+      <div class="container-fluid px-3">
+        <router-link to="/userboard/swa" class="navbar-brand">
           <h1 class="save-wildlife mb-0 text-secondary display-5">SWA</h1>
         </router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,19 +13,24 @@
             <li class="nav-item">
               <a href="#" class="nav-link me-2">關於我們</a>
             </li>
-            <li class="border-end border-secondary pe-3">follow us</li>
+            <li class="nav-item">
+              <router-link to="/userboard/productList" class="nav-link me-2" @click="navbarBg = true">產品列表</router-link>
+            </li>
+            <li>follow us
+              <span class="ms-2"><font-awesome-icon icon="fa-regular fa-hand-point-right"/></span>
+            </li>
             <li class="nav-item fs-3 ms-2">
-              <a href="#" class="nav-link">
+              <a href="http://www.youtube.com" class="nav-link">
                 <font-awesome-icon icon="fa-brands fa-youtube"/>
               </a>
             </li>
             <li class="nav-item fs-3">
-              <a href="#" class="nav-link">
+              <a href="http://www.instagram.com" class="nav-link">
                 <font-awesome-icon icon="fa-brands fa-instagram"/>
               </a>
             </li>
             <li class="nav-item fs-3">
-              <a href="#" class="nav-link">
+              <a href="http://www.facebook.com" class="nav-link">
                 <font-awesome-icon icon="fa-brands fa-square-facebook" />
               </a>
             </li>
@@ -33,24 +38,7 @@
         </div>
       </div>
     </nav>
-    <Video class="position-fixed"></Video>
-    <SideBtn class="position-fixed bg-secondary sideBtnHover" style="top: 20%; z-index: 11;">
-      <font-awesome-icon class="fs-3 mb-2 mt-4" icon="hippo"/>
-      <h3 class="h4 fw-bold" style="writing-mode: vertical-rl;">
-        <div class="fs-6 text-end">- Animals</div>
-        動物們
-      </h3>
-      <img src="@/assets/elephant.png" class="position-absolute" style="width: 200px; bottom: -30px; right: 10px;" alt="elephant">
-    </SideBtn>
-    <SideBtn class="position-fixed bg-success sideBtnHover" style="top: 50%; z-index: 11;">
-      <font-awesome-icon class="fs-3 mb-2 mt-4" icon="seedling"/>
-      <h3 class="h4 fw-bold" style="writing-mode: vertical-rl;">
-        <div class="fs-6 text-end">- donation</div>
-        捐獻車
-      </h3>
-      <img src="@/assets/cheetah.png" class="position-absolute" style="width: 300px; bottom: -30px; right: -10px;" alt="elephant">
-    </SideBtn>
-    <div class="container-fluid position-relative" style="height: 150vh; top: 100vh; z-index: 10; background: #fff;">
+    <div class="position-relative">
       <router-view/>
       <ToastMessages></ToastMessages>
     </div>
@@ -74,40 +62,28 @@
 .save-wildlife {
   font-family: 'Black Ops One', cursive;
 }
-
-.sideBtnHover {
-  right: -20px;
-  transition: .5s;
-}
-
-.sideBtnHover:hover {
-  right: 0px;
-  transition: .5s;
-}
 </style>
 
 <script>
 import emitter from '@/methods/emitter'
 import pushMessageState from '@/methods/pushMessageState'
 import ToastMessages from '@/components/ToastMessages.vue'
-import Video from '@/components/VideoC.vue'
-import SideBtn from '@/components/SideBtn.vue'
 
 export default {
   components: {
-    ToastMessages,
-    Video,
-    SideBtn
+    ToastMessages
   },
   data () {
     return {
+      spotY: window.top.scrollY,
       navbarBg: false
     }
   },
   provide () {
     return {
       emitter,
-      pushMessageState
+      pushMessageState,
+      spotY: this.spotY
     }
   },
   mounted () {
@@ -118,7 +94,8 @@ export default {
   },
   methods: {
     onScroll () {
-      if (window.top.scrollY >= window.innerHeight) {
+      this.spotY = window.top.scrollY
+      if (this.spotY >= window.innerHeight) {
         this.navbarBg = true
       } else {
         this.navbarBg = false

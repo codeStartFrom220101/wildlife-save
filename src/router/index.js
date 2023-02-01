@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'home',
     component: HomeView
   },
@@ -45,12 +45,25 @@ const routes = [
     component: () => import('../views/UserboardView.vue'),
     children: [
       {
+        path: 'SWA',
+        component: () => import('../views/UserHome.vue')
+      },
+      {
         path: 'cart',
         component: () => import('../views/UserCart.vue')
       },
       {
-        path: 'product',
-        component: () => import('../views/UserProduct.vue')
+        path: 'productList',
+        component: () => import('../views/UserProductList.vue')
+      },
+      {
+        path: 'productList/:productId',
+        component: () => import('../views/UserProduct.vue'),
+        props: (route) => {
+          return {
+            id: route.params.productId
+          }
+        }
       }
     ]
   }
@@ -58,7 +71,8 @@ const routes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes,
+  linkActiveClass: 'active'
 })
 
 export default router

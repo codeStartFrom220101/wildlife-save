@@ -11,11 +11,12 @@ import 'vue3-loading-overlay/dist/vue3-loading-overlay.css'
 import { currency, date } from './methods/filters'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHippo, faSeedling } from '@fortawesome/free-solid-svg-icons'
+import { faHippo, faDrumstickBite, faChevronRight, faToiletPaper, faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram, faFacebookSquare, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faHandPointRight } from '@fortawesome/free-regular-svg-icons'
 
-library.add(faHippo, faSeedling, faInstagram, faFacebookSquare, faYoutube)
+library.add(faHippo, faDrumstickBite, faInstagram, faFacebookSquare, faYoutube, faHandPointRight, faChevronRight, faToiletPaper, faCartPlus)
 
 const app = createApp(App)
 app.config.globalProperties.$filters = {
