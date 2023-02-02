@@ -26,7 +26,7 @@
         </td>
         <td>
           <span class="text-success" v-if="item.is_enabled">啟用</span>
-          <span class="text-success" v-else>啟用</span>
+          <span class="text-danger" v-else>未啟用</span>
         </td>
         <td>
           <div class="btn-group">
@@ -73,6 +73,7 @@ export default {
             this.isLoading = false
             this.products = res.data.products
             this.pagination = res.data.pagination
+            console.log(this.products)
           }
         })
     },

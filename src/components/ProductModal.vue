@@ -5,43 +5,44 @@
       <div class="modal-content border-0">
         <div class="modal-header bg-dark text-white">
           <h5 class="modal-title" id="exampleModalLabel">
-            <span>新增產品</span>
+            <span v-if="!product.title">新增產品</span>
+            <span v-else>編輯產品</span>
           </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-4">
-              <!-- <div class="mb-3">
+              <div class="mb-3">
                 <label for="image" class="form-label">輸入圖片網址</label>
                 <input type="text" class="form-control" id="image" v-model="tempProduct.imageUrl"
                         placeholder="請輸入圖片連結">
-              </div> -->
-              <!-- <div class="mb-3">
+              </div>
+              <div class="mb-3">
                 <label for="customFile" class="form-label">或 上傳圖片
                   <i class="fas fa-spinner fa-spin"></i>
                 </label>
                 <input type="file" id="customFile" class="form-control" ref="fileInput" @change="uploadFile">
-              </div> -->
-              <!-- <img class="img-fluid" :src="tempProduct.imageUrl" alt=""> -->
+              </div>
+              <img class="img-fluid" :src="tempProduct.imageUrl" alt="">
               <!-- 延伸技巧，多圖 -->
-              <div class="mt-5" v-if="tempProduct.images">
+              <div class="mt-5" v-if="tempProduct.imagesUrl">
                 <div class="url-scroll mb-2">
-                  <div class="mb-3 input-group" v-for="(item, key) in tempProduct.images" :key="key">
+                  <div class="mb-3 input-group" v-for="(item, key) in tempProduct.imagesUrl" :key="key">
                     <span class="input-group-text bg-dark text-white">{{ `${key + 1}` }}</span>
-                    <input type="url" class="form-control form-control"  v-model="tempProduct.images[key]"
+                    <input type="url" class="form-control form-control"  v-model="tempProduct.imagesUrl[key]"
                             placeholder="請輸入連結">
-                    <button type="button" class="btn btn-outline-danger" @click="tempProduct.images.splice(key, 1)">
+                    <button type="button" class="btn btn-outline-danger" @click="tempProduct.imagesUrl.splice(key, 1)">
                       移除
                     </button>
                   </div>
                 </div>
-                <div class="mb-2" v-if="tempProduct.images[tempProduct.images.length - 1] || !tempProduct.images.length">
-                  <button class="btn btn-outline-primary btn-sm d-block w-100" @click="tempProduct.images.push('')">
+                <div class="mb-2" v-if="tempProduct.imagesUrl[tempProduct.imagesUrl.length - 1] || !tempProduct.imagesUrl.length">
+                  <button class="btn btn-outline-primary btn-sm d-block w-100" @click="tempProduct.imagesUrl.push('')">
                     新增圖片
                   </button>
                 </div>
-                <Swiper :images="tempProduct.images"></Swiper>
+                <Swiper :imagesUrl="tempProduct.imagesUrl"></Swiper>
               </div>
             </div>
             <div class="col-sm-8">
@@ -91,12 +92,14 @@
               <div class="mb-3">
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox"
+                          v-model="tempProduct.is_enabled"
                           :true-value="1"
                           :false-value="0"
                           id="is_enabled">
                   <label class="form-check-label" for="is_enabled">
                     是否啟用
                   </label>
+                  {{ tempProduct }}
                 </div>
               </div>
             </div>
@@ -137,8 +140,8 @@ export default {
   watch: {
     product () {
       this.tempProduct = this.product
-      if (!this.tempProduct.images) {
-        this.tempProduct.images = []
+      if (!this.tempProduct.imagesUrl) {
+        this.tempProduct.imagesUrl = []
       }
     }
   },
@@ -158,7 +161,7 @@ export default {
         .then(res => {
           if (res.data.success) {
             this.tempProduct.imageUrl = res.data.imageUrl
-            this.tempProduct.images.push(this.tempProduct.imageUrl)
+            this.tempProduct.imagesUrl.push(this.tempProduct.imageUrl)
           }
         })
     }
