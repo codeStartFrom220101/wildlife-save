@@ -38,7 +38,15 @@
           </div>
           <div class="d-flex mt-3">
             <div class="fs-5">NT {{ product.price }}</div>
-            <button type="button" class="btn btn-dark px-3 d-block ms-auto"><font-awesome-icon icon="fa-solid fa-cart-plus"/> 加入購物車</button>
+            <button type="button" @click="addToCart(product.id)" class="btn btn-warning px-3 d-block ms-auto" style="width: 150px">
+              <div  v-if="!status.loadingItem">
+                <font-awesome-icon icon="fa-solid fa-cart-plus"/>
+                加入購物車
+              </div>
+              <div class="spinner-border spinner-border-sm text-success" role="status" v-else>
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </button>
           </div>
         </div>
       </div>
@@ -58,9 +66,13 @@
 export default {
   data () {
     return {
-      product: {}
+      product: {},
+      status: {
+        loadingItem: ''
+      }
     }
   },
+  inject: ['pushMessageState'],
   props: ['id'],
   methods: {
     getProduct (id) {
@@ -71,6 +83,20 @@ export default {
           if (res.data.success) {
             this.product = res.data.product
           }
+        })
+    },
+    addToCart (id) {
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`
+      this.status.loadingItem = id
+      const cart = {
+        product_id: id,
+        qty: 1
+      }
+      console.log(cart)
+      this.$http.post(api, { data: cart })
+        .then((res) => {
+          this.pushMessageState(res, `${this.product.title ? `"${this.product.title}"` : ''}放入購物車`)
+          this.status.loadingItem = ''
         })
     }
   },

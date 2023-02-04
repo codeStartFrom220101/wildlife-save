@@ -16,6 +16,12 @@
             <li class="nav-item">
               <router-link to="/userboard/productList" class="nav-link me-2" @click="navbarBg = true">產品列表</router-link>
             </li>
+            <li class="nav-item position-relative">
+              <a href="#" class="nav-link me-2 fs-4" @click.prevent="cartDropdown = !cartDropdown">
+                <font-awesome-icon icon="fa-solid fa-cart-arrow-down"/>
+              </a>
+              <Cart class="position-absolute rounded cart" :class="{'active': cartDropdown}"></Cart>
+            </li>
             <li>follow us
               <span class="ms-2"><font-awesome-icon icon="fa-regular fa-hand-point-right"/></span>
             </li>
@@ -62,21 +68,37 @@
 .save-wildlife {
   font-family: 'Black Ops One', cursive;
 }
+
+.cart {
+  opacity: 0;
+  right: 0;
+  transition: .5s;
+}
+
+.cart.active {
+  opacity: 1;
+  right: 50%;
+  transition: .5s;
+}
+
 </style>
 
 <script>
 import emitter from '@/methods/emitter'
 import pushMessageState from '@/methods/pushMessageState'
 import ToastMessages from '@/components/ToastMessages.vue'
+import Cart from '@/components/CartC.vue'
 
 export default {
   components: {
-    ToastMessages
+    ToastMessages,
+    Cart
   },
   data () {
     return {
       spotY: window.top.scrollY,
-      navbarBg: false
+      navbarBg: false,
+      cartDropdown: false
     }
   },
   provide () {
