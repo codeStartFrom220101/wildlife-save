@@ -45,7 +45,7 @@ const routes = [
     component: () => import('../views/UserboardView.vue'),
     children: [
       {
-        path: 'SWA',
+        path: 'home',
         component: () => import('../views/UserHome.vue')
       },
       {

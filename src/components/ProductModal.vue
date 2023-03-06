@@ -148,7 +148,8 @@ export default {
   data () {
     return {
       modal: {},
-      tempProduct: {}
+      tempProduct: {
+      }
     }
   },
   methods: {

@@ -12,11 +12,13 @@ import { currency, date } from './methods/filters'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faHippo, faDrumstickBite, faChevronRight, faToiletPaper, faCartPlus, faCartArrowDown, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { faInstagram, faFacebookSquare, faYoutube } from '@fortawesome/free-brands-svg-icons'
+import { faInstagram, faFacebookSquare, faYoutube, faFacebookF, faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faHandPointRight } from '@fortawesome/free-regular-svg-icons'
 
-library.add(faHippo, faDrumstickBite, faInstagram, faFacebookSquare, faYoutube, faHandPointRight, faChevronRight, faToiletPaper, faCartPlus, faCartArrowDown, faTrash)
+library.add(faHippo, faDrumstickBite,
+  faInstagram, faFacebookSquare, faYoutube, faFacebookF, faTwitter, faGithub,
+  faHandPointRight, faChevronRight, faToiletPaper, faCartPlus, faCartArrowDown, faTrash)
 
 const app = createApp(App)
 app.config.globalProperties.$filters = {

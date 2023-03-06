@@ -1,104 +1,146 @@
 <template>
-  <div class="wrap">
-    <nav class="navbar navbar-expand-lg navbar-white fixed-top navbar-bg p-0" :class="[{'bg-primary': navbarBg}, {'shadow-sm': !navbarBg}]">
-      <div class="container-fluid px-3">
-        <router-link to="/userboard/swa" class="navbar-brand">
-          <h1 class="save-wildlife mb-0 text-secondary display-5">SWA</h1>
-        </router-link>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto align-items-center">
-            <li class="nav-item">
-              <a href="#" class="nav-link me-2">關於我們</a>
-            </li>
-            <li class="nav-item">
-              <router-link to="/userboard/productList" class="nav-link me-2" @click="navbarBg = true">產品列表</router-link>
-            </li>
-            <li class="nav-item position-relative">
-              <a href="#" class="nav-link me-2 fs-4" @click.prevent="cartDropdown = !cartDropdown">
-                <font-awesome-icon icon="fa-solid fa-cart-arrow-down"/>
-              </a>
-              <Cart class="position-absolute rounded cart" :class="{'active': cartDropdown}"></Cart>
-            </li>
-            <li>follow us
-              <span class="ms-2"><font-awesome-icon icon="fa-regular fa-hand-point-right"/></span>
-            </li>
-            <li class="nav-item fs-3 ms-2">
-              <a href="http://www.youtube.com" class="nav-link">
-                <font-awesome-icon icon="fa-brands fa-youtube"/>
-              </a>
-            </li>
-            <li class="nav-item fs-3">
-              <a href="http://www.instagram.com" class="nav-link">
-                <font-awesome-icon icon="fa-brands fa-instagram"/>
-              </a>
-            </li>
-            <li class="nav-item fs-3">
-              <a href="http://www.facebook.com" class="nav-link">
-                <font-awesome-icon icon="fa-brands fa-square-facebook" />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="position-relative">
-      <router-view/>
-      <ToastMessages></ToastMessages>
-    </div>
+  <nav class="d-flex justify-content-between align-items-center fixed-top bg-white" style="height: 56px">
+    <h1 class="mb-0 fw-bolder"><a href="#" class="px-3">動齊來</a></h1>
+    <ul class="d-md-flex fw-bold list-unstyled mb-0 d-none">
+      <li class="h-100">
+        <a href="#" class="d-block px-4 py-3">登入</a>
+      </li>
+      <li class="h-100 bg-secondary">
+        <router-link to="" href="#" class="text-white text-decoration-none d-block px-4 py-3">關於我們</router-link>
+      </li>
+      <li class="h-100 bg-primary">
+        <router-link to="productList" href="#" class="text-white text-decoration-none d-block px-4 py-3">產品列表</router-link>
+      </li>
+      <li class="h-100 bg-black px-2">
+        <router-link to="" href="#" class="text-white text-decoration-none d-block px-4 py-3">購物車</router-link>
+      </li>
+    </ul>
+    <ul class="mobile-menu list-unstyled position-absolute bg-white w-100 shadow d-md-none" style="top: 56px" :class="{'active': allStatus.mobileMenu}">
+      <li class="border-top border-dark">
+        <a href="#" class="text-decoration-none d-block px-4 py-2">關於我們</a>
+      </li>
+      <li class="border-top border-dark">
+        <a href="#" class="text-decoration-none d-block px-4 py-2">產品列表</a>
+      </li>
+      <li class="border-top border-dark">
+        <a href="#" class="text-decoration-none d-block px-4 py-2">購物車</a>
+      </li>
+      <li class="border-top border-dark">
+        <a href="#" class="d-block px-4 py-2">登入</a>
+      </li>
+    </ul>
+    <button class="menu-btn d-md-none mx-3" @click="statusToggle('mobileMenu')" :class="{'active': allStatus.mobileMenu}">
+      <div></div>
+    </button>
+  </nav>
+  <!-- 主要內容 -->
+  <div class="position-relative">
+    <router-view/>
+    <ToastMessages></ToastMessages>
   </div>
 </template>
 
 <style>
-.navbar-bg {
-  background: transparent;
-  transition: 1s;
-}
+  * {
+    font-family: 'Noto Sans TC', sans-serif;
+  }
 
-.wrap>.bg-primary {
-  transition: 1s;
-}
+  a {
+    text-decoration: none;
+    color: #000000;
+  }
 
-.wrap {
-  font-family: 'Noto Sans TC', sans-serif;
-}
+  .menu-btn {
+    width: 36px;
+    height: 36px;
+    background: white;
+    border: none;
+    padding: 0;
+    overflow: hidden;
+  }
 
-.save-wildlife {
-  font-family: 'Black Ops One', cursive;
-}
+  .menu-btn div {
+    margin: 0 auto;
+    width: 24px;
+    height: 4px;
+    border-radius: 5px;
+    background: black;
+    position: relative;
+    transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
+  }
 
-.cart {
-  opacity: 0;
-  right: 0;
-  transition: .5s;
-}
+  .menu-btn div::after, .menu-btn div::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 4px;
+    border-radius: 5px;
+    background: #000;
+    transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
+  }
 
-.cart.active {
-  opacity: 1;
-  right: 50%;
-  transition: .5s;
-}
+  .menu-btn div::after {
+    transform: translateY(8px);
+  }
 
+  .menu-btn div::before {
+    transform: translateY(-8px);
+  }
+
+  .menu-btn.active > div {
+    transform: translateX(-35px);
+  }
+
+  .menu-btn.active > div::before{
+      transform: translateX(35px) rotate(135deg);
+  }
+
+  .menu-btn.active > div::after {
+      transform: translateX(35px) rotate(-135deg);
+  }
+
+  .fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+  }
+
+  nav .mobile-menu {
+    transform: translateY(-100vh);
+    transition: all 1s cubic-bezier(0.22, 0.32, 0.27, 1.3);
+  }
+
+  nav .mobile-menu.active {
+    transform: translateY(0);
+  }
+
+  nav .mobile-menu li:hover{
+    background: var(--bs-primary);
+    transition: all .5s;
+  }
+
+  nav .mobile-menu li:hover a {
+    color: white;
+  }
 </style>
 
 <script>
 import emitter from '@/methods/emitter'
 import pushMessageState from '@/methods/pushMessageState'
 import ToastMessages from '@/components/ToastMessages.vue'
-import Cart from '@/components/CartC.vue'
 
 export default {
   components: {
-    ToastMessages,
-    Cart
+    ToastMessages
   },
   data () {
     return {
       spotY: window.top.scrollY,
-      navbarBg: false,
-      cartDropdown: false
+      allStatus: {
+        mobileMenu: false
+      }
     }
   },
   provide () {
@@ -109,19 +151,24 @@ export default {
     }
   },
   mounted () {
-    window.addEventListener('scroll', this.onScroll)
+    // window.addEventListener('scroll', this.onScroll)
   },
   beforeUnmount () {
-    window.removeEventListener('scroll', this.onScroll)
+    // window.removeEventListener('scroll', this.onScroll)
   },
   methods: {
-    onScroll () {
-      this.spotY = window.top.scrollY
-      if (this.spotY >= window.innerHeight) {
-        this.navbarBg = true
-      } else {
-        this.navbarBg = false
-      }
+    // onScroll () {
+    //   this.spotY = window.top.scrollY
+    //   const navbar = document.querySelector('.navbar')
+    //   console.dir(navbar)
+    //   if (this.spotY >= window.innerHeight - navbar.offsetHeight / 2) {
+    //     this.navbarBg = true
+    //   } else {
+    //     this.navbarBg = false
+    //   }
+    // }
+    statusToggle (statusName) {
+      this.allStatus[statusName] = !this.allStatus[statusName]
     }
   }
 }

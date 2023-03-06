@@ -1,118 +1,195 @@
 <template>
-  <Video class="position-fixed"></Video>
-  <SideBtn class="position-fixed bg-secondary sideBtnHover d-none d-sm-block" style="top: 20%; z-index: 11;">
-    <font-awesome-icon class="fs-3 mb-2 mt-4" icon="hippo"/>
-    <h3 class="h4 fw-bold" style="writing-mode: vertical-rl;">
-      <div class="fs-6 text-end">- Animals</div>
-      動物們
-    </h3>
-    <img src="@/assets/elephant.png" class="position-absolute" style="width: 200px; bottom: -30px; right: 10px;" alt="elephant">
-  </SideBtn>
-  <SideBtn class="position-fixed bg-success sideBtnHover d-none d-sm-block" style="top: 50%; z-index: 11;">
-    <font-awesome-icon class="fs-3 mb-2 mt-4" icon="fa-solid fa-drumstick-bite"/>
-    <h3 class="h4 fw-bold" style="writing-mode: vertical-rl;">
-      <div class="fs-6 text-end">- donation</div>
-      捐獻車
-    </h3>
-    <img src="@/assets/cheetah.png" class="position-absolute" style="width: 300px; bottom: -30px; right: -10px;" alt="elephant">
-  </SideBtn>
-  <div class="position-absolute bg-white" style="width:100%; top: 150vh;">
-    <section class="px-md-5 mt-md-5">
-      <div class="row g-0">
-        <div class="col-lg-4">
-          <div class="bg-about about d-flex align-items-center justify-content-center" style="background-position: 50% 50%;" ref="about">
-            <div class="d-flex flex-column align-items-center justify-content-center text-center px-3" style="background: rgba(0, 0, 0, 0.3); width: 35%; height: 20%;">
-              <p class="text-primary mb-0 fs-5">若你想知道更多</p>
-              <a href="#" class="link-primary py-1 px-3">關於我們</a>
+  <Video ref="video"></Video>
+  <SideBtn></SideBtn>
+  <div class="position-absolute bg-white w-100" style="top: 100vh; z-index: 1;">
+    <div class="wrap">
+      <section class="mt-6">
+        <div class="row justify-content-around mx-md-7 g-0">
+          <div class="col-lg-3">
+            <div class="d-flex flex-column align-items-center justify-content-around w-100 text-black" style="height: 300px;">
+              <div class="endangered-num fw-bolder mb-0 lh-sm" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25); font-size: 100px;">3097</div>
+              <div class="endangered-text fs-3 fw-bold" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25);">瀕臨絕種</div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="d-flex flex-column align-items-center justify-content-around w-100 text-white bg-primary" style="height: 300px;">
+              <div class="fw-bolder mb-0 lh-sm" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25); font-size: 100px;">9487</div>
+              <div class="fs-3 fw-bold" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25);">捐獻人數</div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="d-flex flex-column align-items-center justify-content-around w-100 text-black" style="height: 300px;">
+              <div class="endangered-num fw-bolder mb-0 lh-sm" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25); font-size: 100px;">520K</div>
+              <div class="endangered-text fs-3 fw-bold" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25);">商品售出</div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="bg-hero about p-3 bg-primary d-flex flex-column justify-content-around align-items-center">
-            <div class="text-center">
-              <h4 class="mb-3 h2 fw-bold text-secondary">我們是如何幫助動物的</h4>
-              <p class="fs-5">
-                我們對抗盜獵者<br>
-                為受傷的動物包紮<br>
-                在荒野中製造水坑<br>
-                為受傷過重的動物暫時提供安全的住所<br>
-              </p>
-              <h4 class="h2 mb-3 fw-bold text-secondary">如何成為英雄</h4>
-              <p class="fs-5">
-                為動物捐獻食物<br>
-                捐贈我們所需的裝備<br>
-                我們也有每日的志工團體可以參加<br>
-                也可以購買我們發行的產品<br>
-                這些收入將會為動物帶來更好的生活
-              </p>
-              <a href="#" class="btn btn-outline-secondary">立即行動</a>
+      </section>
+      <section class="mt-6">
+        <div class="row g-0">
+          <div class="col-lg-6">
+            <div class="row g-0">
+              <div class="col-12 bg-secondary" style="height: 320px;">
+                <div class="mx-5 py-5 h-100 d-flex flex-column justify-content-between">
+                  <div class="text-white">
+                    <h2 class="h3 fw-bold">拒絕瀕危</h2>
+                    <p class="mb-0">我們該正視人類帶給動物的傷害<br>
+                        拓展高樓大廈壓縮動物的生存空間<br>
+                        為了美麗飾品造導致的獵殺<br>
+                        工業成長帶來的全球暖化水源減少</p>
+                  </div>
+                  <div>
+                    <a href="#" class="btn btn-outline-light">閱讀更多</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 home-rhino" style="height: 320px;">
+                <div class="mask-container overflow-hidden">
+                  <div class="mask mask-color-home-rhino d-none d-lg-block"></div>
+                  <img src="../assets/home-rhino.jpg" class="h-100 w-100 object-fit-cover" alt="rhino">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="row flex-column flex-lg-column-reverse g-0">
+              <div class="col-12 bg-primary" style="height: 320px;">
+                <div class="mx-5 py-5 h-100 d-flex flex-column justify-content-between">
+                  <div class="text-white">
+                    <h2 class="h3 fw-bold">能做什麼</h2>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <p>挑個自己喜歡的小禮物<br>
+                         不只是購買也是幫助</p>
+                      <a href="#" class="btn btn-outline-light me-7">前往購物</a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <p>若您有多餘的心力<br>
+                         請參考捐獻</p>
+                      <a href="#" class="btn btn-outline-light me-7">前往捐獻</a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <p>照護動物小天使<br>
+                         你也能實際的行動</p>
+                      <a href="#" class="btn btn-outline-light me-7">前往報名</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 home-elephant" style="height: 320px;">
+                <div class="mask-container overflow-hidden">
+                  <div class="mask mask-color-home-elephant d-none d-lg-block"></div>
+                  <img src="../assets/home-elephant.jpg" class="h-100 w-100 object-fit-cover" alt="">
+                </div>
+              </div>
+            </div></div>
+        </div>
+      </section>
+      <section class="d-flex justify-content-center mt-6">
+        <DonateProgress></DonateProgress>
+      </section>
+    </div>
+    <footer class="bg-secondary pt-5 mt-6 text-white fw-blod">
+      <div class="row justify-content-around gx-0 gy-4">
+        <div class="col-md-3">
+          <div class="d-flex justify-content-center">
+            <div class="px-4 text-center text-md-start">
+              <h5>輸入Email來獲得最新消息</h5>
+              <input type="text" class="form-control form-control-sm" placeholder="abc@abcba.com">
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="bg-contact about d-flex align-items-center justify-content-center" style="" ref="about">
-            <div class="d-flex flex-column align-items-center justify-content-center text-center px-3" style="background: rgba(0, 0, 0, 0.3); width: 35%; height: 20%;">
-              <p class="text-primary mb-0 fs-5">有任何需要我們幫助的地方</p>
-              <a href="#" class="link-primary py-2 px-3">聯絡我們</a>
+        <div class="col-md-3">
+          <div class="d-flex justify-content-center">
+            <div class="text-center text-md-start">
+              <h5>追蹤我們</h5>
+              <div class="d-flex">
+                <a href="#" class="py-1 px-2 text-white fs-4"><font-awesome-icon icon="fa-brands fa-facebook-f"/></a>
+                <a href="#" class="py-1 px-2 text-white fs-4"><font-awesome-icon icon="fa-brands fa-twitter"/></a>
+                <a href="#" class="py-1 px-2 text-white fs-4"><font-awesome-icon icon="fa-brands fa-github"/></a>
+                <a href="#" class="py-1 px-2 text-white fs-4"><font-awesome-icon icon="fa-brands fa-instagram"/></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="d-flex justify-content-center">
+            <div class="text-center text-md-start">
+              <h5>聯繫我們</h5>
+              <ul class="list-unstyled">
+                <li>地址：世界的某一個角落</li>
+                <li>電話：0912-345-678</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <section class="px-md-5 mt-md-5" style="height: 200vh;">
-    </section>
+      <div class="d-flex justify-content-center">
+        <p class="mb-0" style="font-size: .9rem;">&copy; 2023 LDD製作 此網頁只當作品無提供任何商業用途</p>
+      </div>
+    </footer>
   </div>
 </template>
 
 <style>
-.sideBtnHover {
-  right: -20px;
-  transition: .5s;
-}
+  .wrap {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
 
-.sideBtnHover:hover {
-  right: 0px;
-  transition: .5s;
-}
+  .endangered-num, .endangered-text{
+    position: relative;
+  }
 
-.about-us>h3>span{
-  font-size: 45px;
-  color: var(--bs-secondary);
-}
+  .endangered-num::after, .endangered-text::after {
+    content: '';
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+    width: 100%;
+    height: 20%;
+    z-index: -1;
+    -webkit-box-shadow: 3px 5px 5px rgba(0, 0, 0, .25);
+    -ms-box-shadow: 3px 5px 5px rgba(0, 0, 0, .25);
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, .25);
+    background: var(--bs-primary);
+  }
 
-.img2, .img3 {
-  width: 100%;
-  height: 75vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-}
+  .mask-color-home-elephant {
+  background-color: rgba(240,156,30, .25);
+  }
 
-.about {
-  width: 100%;
-  height: 75vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+  .home-elephant:hover .mask{
+    top: 100%;
+  }
 
-.bg-about {
-  background-image: url('@/assets/關於我們.jpg');
-}
+  .mask-color-home-rhino {
+    background-color: rgba(38, 51 ,37, .25)
+  }
 
-.bg-contact {
-  background-image: url('@/assets/聯絡我們.jpg');
-}
+  .home-rhino:hover .mask{
+    bottom: 100%;
+  }
+
+  .home-elephant img, .home-rhino img {
+    transition: all .5s cubic-bezier(0.71, 0.17, 0.31, 0.96);
+  }
+
+  .home-elephant:hover img, .home-rhino:hover img {
+    transform: scale(1.1);
+  }
 
 </style>
 
 <script>
 import Video from '@/components/VideoC.vue'
 import SideBtn from '@/components/SideBtn.vue'
+import DonateProgress from '@/components/DonateProgress.vue'
 
 export default {
   components: {
     Video,
-    SideBtn
+    SideBtn,
+    DonateProgress
   },
   data () {
     return {
@@ -125,28 +202,6 @@ export default {
   },
   beforeUnmount () {
     window.removeEventListener('scroll', this.onScroll)
-  },
-  methods: {
-    onScroll () {
-      // const sunset = this.$refs.sunset
-      // console.log(sunset)
-      // if (this.scrollY >= window.innerHeight) {
-      //   if (window.scrollY > this.scrollY && this.sunsetBPY > 0) {
-      //     if (this.sunsetBPY > 0) {
-      //       this.sunsetBPY -= 0.8
-      //     }
-      //   } else {
-      //     if (this.sunsetBPY < 100) {
-      //       this.sunsetBPY += 0.8
-      //     }
-      //   }
-      // } else {
-      //   this.sunsetBPY = 100
-      // }
-      // sunset.style.backgroundPositionY = this.sunsetBPY + '%'
-      // console.log(sunset.style.backgroundPositionY, this.scrollY, window.innerHeight)
-      // this.scrollY = window.scrollY
-    }
   }
 }
 

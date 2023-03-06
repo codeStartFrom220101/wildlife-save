@@ -318,7 +318,7 @@ $utilities: map-merge(
     "margin": (
       responsive: true,
       property: margin,
-      class: m,
+      class: mmc,
       values: map-merge($spacers, (auto: auto))
     ),
     "margin-x": (
@@ -478,7 +478,7 @@ $utilities: map-merge(
         normal: $font-weight-normal,
         bold: $font-weight-bold,
         semibold: $font-weight-semibold,
-        bolder: $font-weight-bolder
+        bolder: $font-weight-bolder,
       )
     ),
     "line-height": (
@@ -649,6 +649,13 @@ $utilities: map-merge(
       values: (
         visible: visible,
         invisible: hidden,
+      )
+    ),
+    // costum
+    "object-fit": (
+      property: object-fit,
+      values: (
+        cover: cover
       )
     )
     // scss-docs-end utils-visibility
