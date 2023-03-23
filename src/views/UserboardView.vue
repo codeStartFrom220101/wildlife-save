@@ -1,6 +1,6 @@
 <template>
-  <nav class="d-flex justify-content-between align-items-center fixed-top bg-white" style="height: 56px">
-    <h1 class="mb-0 fw-bolder"><a href="#" class="px-3">動齊來</a></h1>
+  <nav class="d-flex justify-content-between align-items-center fixed-top bg-white shadow-sm" style="height: 56px">
+    <h1 class="mb-0 fw-bolder"><router-link to="/userboard/home" href="#" class="px-3">動齊來</router-link></h1>
     <ul class="d-md-flex fw-bold list-unstyled mb-0 d-none">
       <li class="h-100">
         <a href="#" class="d-block px-4 py-3">登入</a>
@@ -9,24 +9,24 @@
         <router-link to="" href="#" class="text-white text-decoration-none d-block px-4 py-3">關於我們</router-link>
       </li>
       <li class="h-100 bg-primary">
-        <router-link to="productList" href="#" class="text-white text-decoration-none d-block px-4 py-3">產品列表</router-link>
+        <router-link to="/userboard/productList" href="#" class="text-white text-decoration-none d-block px-4 py-3">產品列表</router-link>
       </li>
       <li class="h-100 bg-black px-2">
-        <router-link to="" href="#" class="text-white text-decoration-none d-block px-4 py-3">購物車</router-link>
+        <router-link to="/userboard/cartpage/cart" href="#" class="text-white text-decoration-none d-block px-4 py-3">購物車</router-link>
       </li>
     </ul>
     <ul class="mobile-menu list-unstyled position-absolute bg-white w-100 shadow d-md-none" style="top: 56px" :class="{'active': allStatus.mobileMenu}">
       <li class="border-top border-dark">
-        <a href="#" class="text-decoration-none d-block px-4 py-2">關於我們</a>
+        <router-link to="" href="#" class="text-decoration-none d-block px-4 py-2">關於我們</router-link>
       </li>
       <li class="border-top border-dark">
-        <a href="#" class="text-decoration-none d-block px-4 py-2">產品列表</a>
+        <router-link to="/userboard/productList" href="#" class="text-decoration-none d-block px-4 py-2">產品列表</router-link>
       </li>
       <li class="border-top border-dark">
-        <a href="#" class="text-decoration-none d-block px-4 py-2">購物車</a>
+        <router-link to="" href="#" class="text-decoration-none d-block px-4 py-2">購物車</router-link>
       </li>
       <li class="border-top border-dark">
-        <a href="#" class="d-block px-4 py-2">登入</a>
+        <a href="#" @click.prevent class="d-block px-4 py-2">登入</a>
       </li>
     </ul>
     <button class="menu-btn d-md-none mx-3" @click="statusToggle('mobileMenu')" :class="{'active': allStatus.mobileMenu}">
@@ -34,10 +34,51 @@
     </button>
   </nav>
   <!-- 主要內容 -->
-  <div class="position-relative">
+  <div>
     <router-view/>
     <ToastMessages></ToastMessages>
   </div>
+  <footer class="bg-secondary pt-5 text-white fw-blod">
+    <div class="row justify-content-around gx-0 gy-4">
+      <div class="col-md-3">
+        <div class="d-flex justify-content-center">
+          <div class="px-4 text-center text-md-start">
+            <h5>輸入Email來獲得最新消息</h5>
+            <input type="text" class="form-control form-control-sm" placeholder="abc@abcba.com">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="d-flex justify-content-center">
+          <div class="text-center text-md-start">
+            <h5>追蹤我們</h5>
+            <div class="d-flex">
+              <a href="#" class="py-1 px-2 text-white fs-4"><font-awesome-icon icon="fa-brands fa-facebook-f"/></a>
+              <a href="#" class="py-1 px-2 text-white fs-4"><font-awesome-icon icon="fa-brands fa-twitter"/></a>
+              <a href="#" class="py-1 px-2 text-white fs-4"><font-awesome-icon icon="fa-brands fa-github"/></a>
+              <a href="#" class="py-1 px-2 text-white fs-4"><font-awesome-icon icon="fa-brands fa-instagram"/></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="d-flex justify-content-center">
+          <div class="text-center text-md-start">
+            <h5>聯繫我們</h5>
+            <ul class="list-unstyled">
+              <li>地址：世界的某一個角落</li>
+              <li>電話：0912-345-678</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center">
+      <p class="mb-0" style="font-size: .9rem;">&copy; 2023 LDD製作 此網頁只當作品無提供任何商業用途</p>
+    </div>
+  </footer>
+
+  <SideBtn></SideBtn>
 </template>
 
 <style>
@@ -130,14 +171,17 @@
 import emitter from '@/methods/emitter'
 import pushMessageState from '@/methods/pushMessageState'
 import ToastMessages from '@/components/ToastMessages.vue'
+import SideBtn from '@/components/SideBtn.vue'
 
 export default {
   components: {
-    ToastMessages
+    ToastMessages,
+    SideBtn
   },
   data () {
     return {
       spotY: window.top.scrollY,
+      cartList: [],
       allStatus: {
         mobileMenu: false
       }
@@ -146,8 +190,7 @@ export default {
   provide () {
     return {
       emitter,
-      pushMessageState,
-      spotY: this.spotY
+      pushMessageState
     }
   },
   mounted () {
@@ -157,16 +200,6 @@ export default {
     // window.removeEventListener('scroll', this.onScroll)
   },
   methods: {
-    // onScroll () {
-    //   this.spotY = window.top.scrollY
-    //   const navbar = document.querySelector('.navbar')
-    //   console.dir(navbar)
-    //   if (this.spotY >= window.innerHeight - navbar.offsetHeight / 2) {
-    //     this.navbarBg = true
-    //   } else {
-    //     this.navbarBg = false
-    //   }
-    // }
     statusToggle (statusName) {
       this.allStatus[statusName] = !this.allStatus[statusName]
     }

@@ -60,6 +60,27 @@ const routes = [
             id: route.params.productId
           }
         }
+      },
+      {
+        path: 'cartpage',
+        component: () => import('../views/CartPageView.vue'),
+        children: [
+          {
+            path: 'cart',
+            name: 'cart',
+            component: () => import('../views/CartView.vue')
+          },
+          {
+            path: 'check',
+            name: 'check',
+            component: () => import('../views/CartOrder.vue')
+          },
+          {
+            path: 'checkout/:orderId',
+            name: 'checkout',
+            component: () => import('../views/CheckOutView.vue')
+          }
+        ]
       }
     ]
   }

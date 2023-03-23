@@ -10,15 +10,23 @@ import Loading from 'vue3-loading-overlay'
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css'
 import { currency, date } from './methods/filters'
 
+// font-awesome icons
+
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHippo, faDrumstickBite, faChevronRight, faToiletPaper, faCartPlus, faCartArrowDown, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faHippo, faDrumstickBite, faChevronRight, faToiletPaper, faCartPlus, faCartArrowDown, faTrash, faHouse, faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram, faFacebookSquare, faYoutube, faFacebookF, faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faHandPointRight } from '@fortawesome/free-regular-svg-icons'
 
 library.add(faHippo, faDrumstickBite,
   faInstagram, faFacebookSquare, faYoutube, faFacebookF, faTwitter, faGithub,
-  faHandPointRight, faChevronRight, faToiletPaper, faCartPlus, faCartArrowDown, faTrash)
+  faHandPointRight, faChevronRight, faToiletPaper, faCartPlus, faCartArrowDown, faTrash,
+  faHouse,
+  faCaretUp, faCaretDown)
+
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0)
+})
 
 const app = createApp(App)
 app.config.globalProperties.$filters = {

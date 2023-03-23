@@ -1,9 +1,9 @@
 <template>
   <Video ref="video"></Video>
-  <SideBtn></SideBtn>
-  <div class="position-absolute bg-white w-100" style="top: 100vh; z-index: 1;">
-    <div class="wrap">
-      <section class="mt-6">
+  <div class="vh-100"></div>
+  <div class="bg-white w-100 py-6">
+    <div class="container-md">
+      <section class="">
         <div class="row justify-content-around mx-md-7 g-0">
           <div class="col-lg-3">
             <div class="d-flex flex-column align-items-center justify-content-around w-100 text-black" style="height: 300px;">
@@ -55,22 +55,28 @@
             <div class="row flex-column flex-lg-column-reverse g-0">
               <div class="col-12 bg-primary" style="height: 320px;">
                 <div class="mx-5 py-5 h-100 d-flex flex-column justify-content-between">
-                  <div class="text-white">
-                    <h2 class="h3 fw-bold">能做什麼</h2>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <p>挑個自己喜歡的小禮物<br>
+                  <div class="row g-2 g text-white">
+                    <h2 class="col-12 h3 fw-bold">能做什麼</h2>
+                    <div class="col-8 d-flex align-items-center">
+                      <p class="mb-0">挑個自己喜歡的小禮物<br>
                          不只是購買也是幫助</p>
-                      <a href="#" class="btn btn-outline-light me-7">前往購物</a>
                     </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <p>若您有多餘的心力<br>
+                    <div class="col-4 d-flex align-items-center">
+                      <a href="#" class="btn btn-outline-light text-nowrap">前往購物</a>
+                    </div>
+                    <div class="col-8 d-flex align-items-center">
+                      <p class="mb-0">若您有多餘的心力<br>
                          請參考捐獻</p>
-                      <a href="#" class="btn btn-outline-light me-7">前往捐獻</a>
                     </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <p>照護動物小天使<br>
+                    <div class="col-4 d-flex align-items-center">
+                      <a href="#" class="btn btn-outline-light text-nowrap">前往捐獻</a>
+                    </div>
+                    <div class="col-8 d-flex align-items-center">
+                      <p class="mb-0">照護動物小天使<br>
                          你也能實際的行動</p>
-                      <a href="#" class="btn btn-outline-light me-7">前往報名</a>
+                    </div>
+                    <div class="col-4 d-flex align-items-center">
+                      <a href="#" class="btn btn-outline-light text-nowrap">前往報名</a>
                     </div>
                   </div>
                 </div>
@@ -88,45 +94,7 @@
         <DonateProgress></DonateProgress>
       </section>
     </div>
-    <footer class="bg-secondary pt-5 mt-6 text-white fw-blod">
-      <div class="row justify-content-around gx-0 gy-4">
-        <div class="col-md-3">
-          <div class="d-flex justify-content-center">
-            <div class="px-4 text-center text-md-start">
-              <h5>輸入Email來獲得最新消息</h5>
-              <input type="text" class="form-control form-control-sm" placeholder="abc@abcba.com">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="d-flex justify-content-center">
-            <div class="text-center text-md-start">
-              <h5>追蹤我們</h5>
-              <div class="d-flex">
-                <a href="#" class="py-1 px-2 text-white fs-4"><font-awesome-icon icon="fa-brands fa-facebook-f"/></a>
-                <a href="#" class="py-1 px-2 text-white fs-4"><font-awesome-icon icon="fa-brands fa-twitter"/></a>
-                <a href="#" class="py-1 px-2 text-white fs-4"><font-awesome-icon icon="fa-brands fa-github"/></a>
-                <a href="#" class="py-1 px-2 text-white fs-4"><font-awesome-icon icon="fa-brands fa-instagram"/></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="d-flex justify-content-center">
-            <div class="text-center text-md-start">
-              <h5>聯繫我們</h5>
-              <ul class="list-unstyled">
-                <li>地址：世界的某一個角落</li>
-                <li>電話：0912-345-678</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="d-flex justify-content-center">
-        <p class="mb-0" style="font-size: .9rem;">&copy; 2023 LDD製作 此網頁只當作品無提供任何商業用途</p>
-      </div>
-    </footer>
+    <!-- <Footer></Footer> -->
   </div>
 </template>
 
@@ -182,14 +150,14 @@
 
 <script>
 import Video from '@/components/VideoC.vue'
-import SideBtn from '@/components/SideBtn.vue'
 import DonateProgress from '@/components/DonateProgress.vue'
+// import Footer from '@/components/FooterC.vue'
 
 export default {
   components: {
     Video,
-    SideBtn,
     DonateProgress
+    // Footer
   },
   data () {
     return {

@@ -23,7 +23,7 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  z-index: 1;
+  z-index: -1;
 }
 
 .banner-bg {
@@ -33,11 +33,9 @@
   left: 0;
   bottom: 0;
   background: rgba(0,0,0, 0.2);
-  z-index: 1;
 }
 
 .banner-text {
-  z-index: 2
 }
 
 .banner video{
