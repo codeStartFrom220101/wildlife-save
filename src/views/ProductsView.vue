@@ -73,7 +73,6 @@ export default {
             this.isLoading = false
             this.products = res.data.products
             this.pagination = res.data.pagination
-            console.log(this.products)
           }
         })
     },

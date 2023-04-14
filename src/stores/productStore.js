@@ -37,7 +37,6 @@ export default defineStore('productStore', {
         })
     },
     categoryChange (category) {
-      console.log(category)
       this.categoryNow = category
       this.productCategoryList = category === '全部商品' ? this.productList : this.productList.filter(product => product.category === category)
     },

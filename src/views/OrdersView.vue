@@ -67,7 +67,6 @@ export default {
       this.$http.get(api)
         .then((res) => {
           if (res.data.success) {
-            console.log(res)
             this.isLoading = false
             this.orders = res.data.orders
             this.pagination = res.data.pagination

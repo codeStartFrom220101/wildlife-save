@@ -191,7 +191,6 @@ export default {
   },
   created () {
     this.getProduct(this.id)
-    console.log(this.similarList)
   }
 }
 </script>

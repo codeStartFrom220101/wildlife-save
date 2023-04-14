@@ -125,7 +125,6 @@ export default {
     ...mapActions(cartStore, ['getCartPage', 'getOrder']),
     timeChange (time) {
       const orderTime = new Date(time * 1000)
-      console.log(orderTime)
       const year = orderTime.getFullYear()
       const month = orderTime.getMonth()
       const date = orderTime.getDate()
@@ -138,7 +137,6 @@ export default {
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/pay/${id}`
       this.$http.post(api)
         .then((res) => {
-          console.log(res)
           if (res.data.success) {
             this.getOrder(id)
             this.$router.push(`/userboard/cartpage/finished/${id}`)

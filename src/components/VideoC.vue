@@ -1,12 +1,12 @@
 <template>
   <div class="banner position-fixed">
     <div class="banner-bg"></div>
-    <!-- <video ref="video" class="d-none d-md-block"  muted  @click="videoPause">
+    <video ref="video" class="d-none d-md-block"  muted  @click="videoPause">
       <source src="@/assets/video-1.mp4" type="video/mp4">
     </video>
     <video class="d-md-none"  muted >
       <source src="@/assets/video-mobile.mp4" type="video/mp4">
-    </video> -->
+    </video>
     <div class="banner-text px-4 py-3 position-absolute translate-middle text-white fw-bold lh-base start-50 top-50 opacity-75 text-center w-100">
       <h2 class="py-2">反抗瀕臨絕種<br>
       讓美麗的物種都能有活下去的機會</h2>

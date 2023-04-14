@@ -112,7 +112,6 @@ export default {
       couponComponent.hideModal()
     },
     openDelModal (item) {
-      console.log(item)
       this.tempCoupon = { ...item }
       const delComponent = this.$refs.delModal
       delComponent.showModal()

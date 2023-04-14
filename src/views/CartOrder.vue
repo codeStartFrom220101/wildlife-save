@@ -87,14 +87,12 @@ export default {
       const order = this.form
       this.$http.post(api, { data: order })
         .then((res) => {
-          console.log(res)
           res.data.success ? this.$router.push(`checkout/${res.data.orderId}`) : res.data.message === '購物車內無資料' ? alert('您的購物車還是空的') : alert('您的資料未填完整')
         })
     },
     formValidation () {
       // Fetch all the forms we want to apply custom Bootstrap validation styles to
       const forms = document.querySelectorAll('.needs-validation')
-      console.log(forms)
 
       // Loop over them and prevent submission
       Array.prototype.slice.call(forms)
