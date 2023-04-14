@@ -30,7 +30,6 @@ export default {
   methods: {
     logout () {
       const api = `${process.env.VUE_APP_API}/logout`
-      console.log(api)
       this.$http.post(api, this.user)
         .then((res) => {
           this.$router.push('/login')

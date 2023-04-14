@@ -1,4 +1,5 @@
 <template>
+  <LoadingOverlay :active="isLoading"></LoadingOverlay>
   <div class="container py-6">
     <div class="row justify-content-center g-3 g-md-5">
       <div class="col-md-6 col-lg-5" style="height: 500px;">
@@ -46,9 +47,9 @@
               <div class="row">
                 <div class="col-6">
                   <div class="input-group mb-3">
-                    <a href="#" @click.prevent="qtyCount(true)" class="input-group-text btn btn-primary" id="basic-addon1" :class="{'disabled': status.loadingItem}"><font-awesome-icon icon="fa-solid fa-caret-up" /></a>
-                    <input type="number" class="form-control" placeholder="你想購買的數量" aria-label="Username" aria-describedby="basic-addon1" v-model="qty" :disabled="status.loadingItem !== ''">
-                    <a href="#" @click.prevent="qtyCount(false)" class="input-group-text btn btn-primary" id="basic-addon1" :class="{'disabled': status.loadingItem}"><font-awesome-icon icon="fa-solid fa-caret-down"/></a>
+                    <a href="#" @click.prevent="qtyCount(true)" class="input-group-text btn btn-primary" id="basic-addon1" :class="{'disabled': loadingItem}"><font-awesome-icon icon="fa-solid fa-caret-up" /></a>
+                    <input type="number" class="form-control" placeholder="你想購買的數量" aria-label="Username" aria-describedby="basic-addon1" v-model="qty" :disabled="loadingItem !== ''">
+                    <a href="#" @click.prevent="qtyCount(false)" class="input-group-text btn btn-primary" id="basic-addon1" :class="{'disabled': loadingItem}"><font-awesome-icon icon="fa-solid fa-caret-down"/></a>
                   </div>
                 </div>
                 <div class="col-6">
@@ -58,8 +59,8 @@
             </div>
           </div>
           <div class="d-flex mt-3">
-            <button type="button" @click="addToCart(product, qty)" class="btn btn-primary px-3 d-block ms-auto" :disabled="qty === 0 || status.loadingItem !== ''" style="width: 150px">
-              <div  v-if="!status.loadingItem">
+            <button type="button" @click="addToCart(product, qty)" class="btn btn-primary px-3 d-block ms-auto" :disabled="qty === 0 || loadingItem !== ''" style="width: 150px">
+              <div  v-if="!loadingItem">
                 <font-awesome-icon icon="fa-solid fa-cart-plus"/>
                 加入購物車
               </div>
@@ -86,10 +87,10 @@
             </div>
           </div>
           <div class="card-footer">
-            <router-link :to="`${similarProduct.id}`" @click.prevent="product = similarProduct; getSimilar();" class="btn btn-outline-primary" :class="{'stretched-link' : status.loadingItem !== similarProduct.id && status.loadingItem === ''}">查看商品</router-link>
-            <a href="#" @click.prevent="addToCart(similarProduct)" class="btn btn-outline-primary position-absolute cartBtn fs-4 d-block" :class="{'disabled' : status.loadingItem === similarProduct.id}">
+            <router-link :to="`/userboard/productList/${similarProduct.id}`" @click.prevent="getProduct(similarProduct.id);" class="btn btn-outline-primary" :class="{'stretched-link' : loadingItem !== similarProduct.id && loadingItem === ''}">查看商品</router-link>
+            <a href="#" @click.prevent="addToCart(similarProduct)" class="btn btn-outline-primary position-absolute cartBtn fs-4 d-block" :class="{'disabled' : loadingItem === similarProduct.id}">
               <div class="d-flex align-items-center justify-content-center" style="width: 24px; height: 24px;">
-                <font-awesome-icon v-if="status.loadingItem !== similarProduct.id" icon="fa-solid fa-cart-plus"/>
+                <font-awesome-icon v-if="loadingItem !== similarProduct.id" icon="fa-solid fa-cart-plus"/>
                 <div class="spinner-grow text-primary spinner-grow-sm" role="status" v-else>
                   <span class="visually-hidden"></span>
                 </div>
@@ -164,67 +165,33 @@
 </style>
 
 <script>
-import cartMixin from '@/mixins/cartMixin'
+import { mapActions, mapState } from 'pinia'
+import cartStore from '@/stores/cartStore'
+import productStore from '@/stores/productStore'
+import statusStore from '@/stores/statusStore'
 
 export default {
   data () {
     return {
-      product: {},
-      similarList: [],
-      cartList: [],
-      qty: 1,
-      status: {
-        loadingItem: ''
-      }
+      qty: 1
     }
   },
   inject: ['pushMessageState', 'emitter'],
-  mixins: [cartMixin],
   props: ['id'],
-  components: {
+  computed: {
+    ...mapState(productStore, ['product', 'similarList']),
+    ...mapState(statusStore, ['isLoading', 'loadingItem'])
   },
   methods: {
-    getProduct (id) {
-      this.isLoading = true
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/product/${id}`
-      this.$http.get(api)
-        .then((res) => {
-          if (res.data.success) {
-            this.product = res.data.product
-            this.getSimilar()
-          }
-        })
-    },
-    getSimilar () {
-      this.similarList = []
-      this.isLoading = true
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`
-      this.$http.get(api)
-        .then((res) => {
-          if (res.data.success) {
-            this.isLoading = false
-            const arr = res.data.products.filter(product => product.category === this.product.category)
-            const index = arr.findIndex(product => product.id === this.product.id)
-            const randomNum = []
-            for (let i = 0; i < arr.length; i++) {
-              randomNum.push(i)
-            }
-            randomNum.sort(() => 0.5 - Math.random())
-            const removeIndex = randomNum.findIndex(num => num === index)
-            randomNum.splice(removeIndex, 1)
-            this.similarList.push(arr[randomNum[0]])
-            this.similarList.push(arr[randomNum[1]])
-            this.similarList.push(arr[randomNum[2]])
-          }
-        })
-    },
+    ...mapActions(cartStore, ['addToCart']),
+    ...mapActions(productStore, ['getProduct']),
     qtyCount (whichBtn) {
       whichBtn ? this.qty++ : this.qty > 0 ? this.qty-- : this.qty = 0
     }
   },
   created () {
     this.getProduct(this.id)
-    this.getCartData()
+    console.log(this.similarList)
   }
 }
 </script>

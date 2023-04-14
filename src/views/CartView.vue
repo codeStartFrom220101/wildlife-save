@@ -21,7 +21,7 @@
       <tr v-for="(product) in cartList" :key="product.id">
         <td colspan="2">{{ product.product.title }}</td>
         <td><p class="mb-0">NT$ {{ $filters.currency(product.product.price) }}</p></td>
-        <td class="d-flex justify-content-center">
+        <td class="d-flex justify-content-center align-items-center h-100">
           <div class="input-group input-group-sm" style="width: 50px;">
             <input type="number" min="1" class="form-control" v-model.number="product.qty" @change="updateCart(product)">
           </div>
@@ -37,7 +37,7 @@
         <td colspan="6" class="py-5">
           <div class="d-flex flex-column align-items-center">
             <h3 class="h4 mb-2 text-center">購買須知</h3>
-            <p class="mb-0 text-start">
+            <p class="mb-0 text-start fs-6">
               ※ 您購買商品之所得將全數用於動物救助行動中。<br>
               ※ 請確認所填寫的資料是否正確，下單後未提供修改付款方式服務。<br>
               ※ 因拍攝略有色差，圖片僅供參考，顏色請以實際收到商品為準。<br>
@@ -59,42 +59,31 @@
 </style>
 
 <script>
-import cartMixin from '@/mixins/cartMixin'
-import router from '@/router'
+import { mapActions, mapState } from 'pinia'
+import cartStore from '@/stores/cartStore'
 
 export default {
   data () {
     return {
-      cartList: [],
       isLoading: false,
       status: {
         loadingItem: ''
       }
     }
   },
-  mixins: [cartMixin],
+  computed: {
+    ...mapState(cartStore, ['cartList'])
+  },
+  inject: ['emitter'],
   methods: {
-    updateCart (product) {
-      this.isLoading = true
-      this.status.loadingItem = product.id
-      const cart = {
-        product_id: product.product_id,
-        qty: product.qty
-      }
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${product.id}`
-      this.$http.put(api, { data: cart })
-        .then(() => {
-          this.isLoading = false
-          this.status.loadingItem = ''
-          this.getCartData()
-        })
-    },
+    ...mapActions(cartStore, ['getCartPage', 'addToCart', 'getCartData', 'delProductFromCart', 'updateCart']),
     goToCheck () {
-      this.cartList.length > 0 ? router.push('check') : alert('您的購物車沒有商品~')
+      this.cartList.length > 0 ? this.$router.push('check') : alert('您的購物車沒有商品~')
     }
   },
   created () {
     this.getCartData()
+    this.getCartPage()
   }
 }
 </script>

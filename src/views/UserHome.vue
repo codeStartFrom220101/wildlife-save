@@ -94,7 +94,6 @@
         <DonateProgress></DonateProgress>
       </section>
     </div>
-    <!-- <Footer></Footer> -->
   </div>
 </template>
 
@@ -151,13 +150,11 @@
 <script>
 import Video from '@/components/VideoC.vue'
 import DonateProgress from '@/components/DonateProgress.vue'
-// import Footer from '@/components/FooterC.vue'
 
 export default {
   components: {
     Video,
     DonateProgress
-    // Footer
   },
   data () {
     return {

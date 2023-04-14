@@ -5,7 +5,7 @@
     <section class="text-black">
       <div class="row justify-content-around mb-2 row-cols-2">
         <div class="col">
-          <router-link to="home"><font-awesome-icon icon="fa-solid fa-house"/></router-link> / <router-link to="productList">市集</router-link> / <span class="text-danger">{{ status.category }}</span>
+          <router-link to="home"><font-awesome-icon icon="fa-solid fa-house"/></router-link> / <router-link to="productList">市集</router-link> / <span class="text-danger">{{ categoryNow }}</span>
         </div>
         <div class="col">
         </div>
@@ -15,14 +15,13 @@
           <div class="px-2">
             <h2 class="h5 mt-2">產品類型</h2>
             <ul class="list-unstyled category-menu">
-              <li class="py-1" v-for="(category) in categorys" :key="category.id" ><a href="#" :class="{'active' : category === status.category}" @click.prevent="categoryChange(category)">{{ category }}</a></li>
+              <li class="py-1" v-for="(category) in categorys" :key="category.id" ><a href="#" :class="{'active' : category === categoryNow}" @click.prevent="categoryChange(category)">{{ category }}</a></li>
             </ul>
           </div>
         </div>
         <div class="col-md-9">
           <div class="row row-cols-1 row-cols-lg-3 g-3 g-md-5">
-            <!-- {{ productList[productList.length - 1] }} -->
-            <div class="col" v-for="(product, key) in productList" :key="key">
+            <div class="col" v-for="(product, key) in productCategoryList" :key="key">
               <div class="card h-100">
                 <div class="container-img">
                   <img :src="product.imageUrl" class="card-img-top object-fit-cover" :alt="product.title" style="height: 200px;">
@@ -38,13 +37,13 @@
                   <router-link
                    :to="`/userboard/productList/${product.id}`"
                    class="btn btn-outline-primary"
-                   :class="{'stretched-link' : status.loadingItem !== product.id && status.loadingItem === ''}">查看商品</router-link>
+                   :class="{'stretched-link' : loadingItem !== product.id && loadingItem === ''}">查看商品</router-link>
                   <a href="#"
                    @click.prevent="addToCart(product)"
                    class="btn btn-outline-primary position-absolute cartBtn fs-4 d-block"
-                   :class="{'disabled' : status.loadingItem === product.id}">
+                   :class="{'disabled' : loadingItem === product.id}">
                     <div class="d-flex align-items-center justify-content-center" style="width: 24px; height: 24px;">
-                      <font-awesome-icon v-if="status.loadingItem !== product.id" icon="fa-solid fa-cart-plus"/>
+                      <font-awesome-icon v-if="loadingItem !== product.id" icon="fa-solid fa-cart-plus"/>
                       <div class="spinner-grow text-primary spinner-grow-sm" role="status" v-else>
                         <span class="visually-hidden"></span>
                       </div>
@@ -53,9 +52,6 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="col" v-for="(product, key) in productList" :key="key">
-              {{ product }}
-            </div> -->
           </div>
         </div>
       </div>
@@ -141,55 +137,31 @@
 
 <script>
 import CartBtn from '@/components/CartBtn.vue'
-import cartMixin from '@/mixins/cartMixin'
+import { mapActions, mapState } from 'pinia'
+import productStore from '@/stores/productStore'
+import cartStore from '@/stores/cartStore'
+import statusStore from '@/stores/statusStore'
 
 export default {
   data () {
     return {
-      allProduct: [],
-      productList: [],
-      cartList: [],
-      categorys: ['全部商品', '衣服', '馬克杯', '捐獻'],
-      tempProduct: {},
-      isLoading: false,
-      status: {
-        loadingItem: '',
-        category: '全部商品'
-      }
     }
   },
   components: {
     CartBtn
   },
+  computed: {
+    ...mapState(productStore, ['productCategoryList', 'categorys', 'categoryNow']),
+    ...mapState(cartStore, ['cartList']),
+    ...mapState(statusStore, ['isLoading', 'loadingItem'])
+  },
   inject: ['pushMessageState', 'emitter'],
-  mixins: [cartMixin],
   methods: {
-    getProducts () {
-      this.isLoading = true
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`
-      this.$http.get(api)
-        .then((res) => {
-          if (res.data.success) {
-            this.isLoading = false
-            this.allProduct = res.data.products
-            this.productList = this.allProduct
-            this.pagination = res.data.pagination
-            this.getCategoryList()
-          }
-        })
-    },
-    categoryChange (category) {
-      this.status.category = category
-      this.productList = category === '全部商品' ? this.allProduct : this.allProduct.filter(product => product.category === category)
-    },
-    getCategoryList () {
-      const categoryAll = this.allProduct.map((product) => product.category)
-      this.categorys = Array.from(new Set(categoryAll))
-      this.categorys.unshift('全部商品')
-    }
+    ...mapActions(productStore, ['getProducts', 'categoryChange']),
+    ...mapActions(cartStore, ['getCartData', 'delProductFromCart', 'addToCart'])
   },
   created () {
-    this.getProducts()
+    this.getProducts(true)
     this.getCartData()
   }
 }

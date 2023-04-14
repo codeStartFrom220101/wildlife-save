@@ -3,6 +3,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import App from './App.vue'
 import router from './router'
+import bootstrap from '../node_modules/bootstrap/dist/js/bootstrap'
+import { createPinia } from 'pinia'
 
 // Import component
 import Loading from 'vue3-loading-overlay'
@@ -33,8 +35,13 @@ app.config.globalProperties.$filters = {
   currency,
   date
 }
+
+const pinia = createPinia()
+
 app.use(VueAxios, axios)
 app.use(router)
+app.use(bootstrap)
+app.use(pinia)
 app.component('LoadingOverlay', Loading)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.mount('#app')

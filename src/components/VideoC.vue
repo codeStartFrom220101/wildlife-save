@@ -7,7 +7,7 @@
     <video class="d-md-none"  muted >
       <source src="@/assets/video-mobile.mp4" type="video/mp4">
     </video> -->
-    <div class="banner-text px-4 py-3 position-absolute translate-middle text-white fw-bold lh-base start-50 top-50 opacity-75 text-center">
+    <div class="banner-text px-4 py-3 position-absolute translate-middle text-white fw-bold lh-base start-50 top-50 opacity-75 text-center w-100">
       <h2 class="py-2">反抗瀕臨絕種<br>
       讓美麗的物種都能有活下去的機會</h2>
       <button type="button" class="btn btn-secondary">
@@ -35,9 +35,6 @@
   background: rgba(0,0,0, 0.2);
 }
 
-.banner-text {
-}
-
 .banner video{
   position: absolute;
   width: 100%;
@@ -59,9 +56,7 @@
 export default {
   methods: {
     videoPause () {
-      console.log(this.$refs)
-      const video = this.$refs.video
-      console.log(video)
+      // const video = this.$refs.video
     }
   },
   created () {

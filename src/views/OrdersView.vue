@@ -12,11 +12,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="item in orders" :key="item.id">
+      <tr v-for="(item, key) in orders" :key="item[key]">
         <td>{{ item.category }}</td>
         <td>{{ item.title }}</td>
         <td>
-          {{ $filters.currency(item.origin_price) }}
+          {{ item.products }}
         </td>
         <td>
           {{ $filters.currency(item.price) }}

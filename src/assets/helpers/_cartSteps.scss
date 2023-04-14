@@ -122,10 +122,18 @@ $base-muted-color: $gray;
   }
   
   .step--complete & {
-    animation: bounce 0.5s ease-in-out;
-    background-color: $primary;
-    border-color: $primary;
-    color: #fff;
+    animation: bounce 0.5s ease-in-out !important;
+    background-color: $primary !important;
+    border-color: $primary !important;
+    color: #fff !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .step__icon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.3rem;
   }
 }
 
@@ -137,6 +145,7 @@ $base-muted-color: $gray;
   font-size: 0.8rem;
   text-transform: uppercase;
   transform: translateX(-50%);
+  white-space: nowrap;
   
   .step--incomplete.step--inactive & {
     color: black;

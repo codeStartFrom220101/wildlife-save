@@ -9,9 +9,9 @@
     </div>
     <div class="position-fixed cart-container rounded" ref="cart">
       <div class="card h-100 p-3">
-        <div class="d-flex align-items-center justify-content-between border-bottom px-2">
+        <div class="d-flex align-items-center justify-content-between border-bottom px-2 pb-2">
           <h4 class="mb-0">購物車清單</h4>
-          <i class="bi bi-cart fs-2 cart-close" @click="closeCart"></i>
+          <button type="button" class="btn-close" aria-label="Close" @click="closeCart"></button>
         </div>
         <ul class="list-unstyled" style="overflow-y: scroll;">
           <li class="mt-2" v-for="(product) in cartList" :key="product.id">
@@ -22,8 +22,8 @@
               <div class="col-8">
                 <div class="d-flex justify-content-between align-items-center h-100">
                   <div>
-                    <h5 class="h6">{{ product.product.title }}</h5>
-                    <p class="mb-0">NT$ {{ $filters.currency(product.product.price) }} * {{ $filters.currency(product.qty) }}<br>
+                    <h5 class="fs-7">{{ product.product.title }}</h5>
+                    <p class="mb-0 fs-8">NT$ {{ $filters.currency(product.product.price) }} * {{ $filters.currency(product.qty) }}<br>
                       共 NT$ {{ $filters.currency(product.final_total) }}</p>
                   </div>
                   <button type="button" @click="$emit('del-product', product.id)" class="btn btn-outline-secondary py-1 px-2 fs-5">
@@ -34,8 +34,11 @@
             </div>
           </li>
         </ul>
-        <div class="border-top">
-          <button type="button" class="btn btn-primary w-100 mt-2">快去結帳</button>
+        <div class="border-top" v-if="cartList.length > 0">
+          <router-link to="/userboard/cartpage/cart" class="btn btn-primary w-100 mt-2">快去結帳</router-link>
+        </div>
+        <div v-else>
+          <p class="text-center">購物車還沒有產品~</p>
         </div>
       </div>
     </div>

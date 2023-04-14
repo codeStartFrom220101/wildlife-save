@@ -1,0 +1,18 @@
+{
+  "donates": {
+    "donor": {
+      "donor": {
+        "name": "LDD",
+        "tel": "0912345678",
+        "email": "keepItUp@keep.com.tw",
+        "money": "100000"
+      },
+      "receipt": {
+        "needsReceipt": true,
+        "title": "LDD",
+        "id": "a123456789",
+        "address": "台北市中和區87街9527號"
+      }
+    }
+  }
+}
