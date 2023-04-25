@@ -1,5 +1,10 @@
 <template>
-  <div class="donate-progress">Donate</div>
+  <div class="donate-progress">
+    Donate
+    <div class="donate-total" :style="`width: ${donatePercent}`">
+      Donate
+    </div>
+  </div>
 </template>
 
 <style>
@@ -19,15 +24,34 @@
     }
   }
 
-  .donate-progress::after {
+  .donate-total {
     content: "Donate";
     position: absolute;
     left: 0;
     top: 0;
     color: var(--bs-primary);
-    width: 50%;
+    width: 0%;
     height: 100%;
     overflow: hidden;
-    /* animation: loading-animation 6s linear infinite; */
+    transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 </style>
+
+<script>
+import donateStore from '@/stores/donateStore'
+import { mapState, mapActions } from 'pinia'
+
+export default {
+  computed: {
+    ...mapState(donateStore, ['donatePercent'])
+  },
+  methods: {
+    ...mapActions(donateStore, ['getDonateData'])
+  },
+  created () {
+    this.getDonateData()
+    console.log(123)
+  }
+}
+
+</script>

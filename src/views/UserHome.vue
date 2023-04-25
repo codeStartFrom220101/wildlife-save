@@ -5,19 +5,19 @@
     <div class="container-md">
       <section class="">
         <div class="row justify-content-around mx-md-7 g-0">
-          <div class="col-lg-3">
+          <div class="col-lg-3" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="1000">
             <div class="d-flex flex-column align-items-center justify-content-around w-100 text-black" style="height: 300px;">
               <div class="endangered-num fw-bolder mb-0 lh-sm" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25); font-size: 100px;">3097</div>
               <div class="endangered-text fs-3 fw-bold" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25);">瀕臨絕種</div>
             </div>
           </div>
-          <div class="col-lg-3">
+          <div class="col-lg-3" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="1000">
             <div class="d-flex flex-column align-items-center justify-content-around w-100 text-white bg-primary" style="height: 300px;">
               <div class="fw-bolder mb-0 lh-sm" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25); font-size: 100px;">9487</div>
               <div class="fs-3 fw-bold" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25);">捐獻人數</div>
             </div>
           </div>
-          <div class="col-lg-3">
+          <div class="col-lg-3" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="1000">
             <div class="d-flex flex-column align-items-center justify-content-around w-100 text-black" style="height: 300px;">
               <div class="endangered-num fw-bolder mb-0 lh-sm" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25); font-size: 100px;">520K</div>
               <div class="endangered-text fs-3 fw-bold" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25);">商品售出</div>
@@ -27,7 +27,7 @@
       </section>
       <section class="mt-6">
         <div class="row g-0">
-          <div class="col-lg-6">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-anchor-placement="top-center" data-aos-duration="1000">
             <div class="row g-0">
               <div class="col-12 bg-secondary" style="height: 320px;">
                 <div class="mx-5 py-5 h-100 d-flex flex-column justify-content-between">
@@ -51,7 +51,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-6" data-aos="fade-left" data-aos-anchor-placement="top-center" data-aos-duration="1000">
             <div class="row flex-column flex-lg-column-reverse g-0">
               <div class="col-12 bg-primary" style="height: 320px;">
                 <div class="mx-5 py-5 h-100 d-flex flex-column justify-content-between">
@@ -91,7 +91,7 @@
         </div>
       </section>
       <section class="d-flex justify-content-center mt-6">
-        <DonateProgress></DonateProgress>
+        <DonateProgress data-aos="fade-down" data-aos-anchor-placement="top-center" data-aos-duration="1000"></DonateProgress>
       </section>
     </div>
   </div>

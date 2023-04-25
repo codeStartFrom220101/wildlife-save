@@ -2,7 +2,7 @@
   <LoadingOverlay :active="isLoading"></LoadingOverlay>
   <div class="banner"></div>
   <div class="container py-6">
-    <section class="text-black">
+    <section class="text-black pb-5">
       <div class="row justify-content-around mb-2 row-cols-2">
         <div class="col">
           <router-link to="home"><font-awesome-icon icon="fa-solid fa-house"/></router-link> / <router-link to="productList">市集</router-link> / <span class="text-danger">{{ categoryNow }}</span>
@@ -151,7 +151,7 @@ export default {
     CartBtn
   },
   computed: {
-    ...mapState(productStore, ['productCategoryList', 'categorys', 'categoryNow']),
+    ...mapState(productStore, ['productCategoryList', 'pagination', 'categorys', 'categoryNow']),
     ...mapState(cartStore, ['cartList']),
     ...mapState(statusStore, ['isLoading', 'loadingItem'])
   },
@@ -161,7 +161,7 @@ export default {
     ...mapActions(cartStore, ['getCartData', 'delProductFromCart', 'addToCart'])
   },
   created () {
-    this.getProducts(true)
+    this.getProducts(1)
     this.getCartData()
   }
 }

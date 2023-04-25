@@ -1,14 +1,15 @@
 <template>
+  <LoadingOverlay :active="isLoading"></LoadingOverlay>
   <div class="banner"></div>
   <div class="container py-6">
-    <div class="d-flex justify-content-center mb-4">
+    <div class="d-flex justify-content-center mb-4" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
       <h2 class="fw-bold border-bottom border-5 pb-2" style="border-color: rgba(240, 156, 30, .5) !important">隨手捐齊來</h2>
     </div>
     <div class="row row-cols-md-2 row-cols-1 g-3 g-md-5 align-items-center">
-      <div class="col">
+      <div class="col" data-aos="fade-right" data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1500">
         <img src="@/assets/briana-tozour-YkdPs_iaCQ8-unsplash.jpg" class="w-100 object-fit-cover" alt="">
       </div>
-      <div class="col">
+      <div class="col" data-aos="fade-left" data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1500">
         <form class="row g-3 needs-validation" novalidate>
           <!-- 第一部分 -->
           <div class="col-12">
@@ -57,11 +58,11 @@
           <div class="col-12">
             <h4 class="h6">是否需要紙本收據：</h4>
             <div class="form-check">
-              <input type="radio" class="form-check-input" id="validationFormCheck2" name="radio-stacked" v-model="form.receipt.needsReceipt" :value="true" required>
+              <input type="radio" class="form-check-input" id="validationFormCheck2" name="radio-stacked" v-model="form.receipt.needsReceipt" :value="true" @change="receiptChange" required>
               <label class="form-check-label" for="validationFormCheck2">需要收據</label>
             </div>
             <div class="form-check mb-3">
-              <input type="radio" class="form-check-input" id="validationFormCheck3" name="radio-stacked" v-model="form.receipt.needsReceipt" :value="false" required>
+              <input type="radio" class="form-check-input" id="validationFormCheck3" name="radio-stacked" v-model="form.receipt.needsReceipt" :value="false" @change="receiptChange" required>
               <label class="form-check-label" for="validationFormCheck3">不需要收據</label>
               <div class="invalid-feedback">請勾選此項目</div>
             </div>
@@ -179,8 +180,9 @@ input[type='radio']:focus ~ label, input[type='checkbox']:focus ~ label {
 </style>
 
 <script>
-import { mapActions } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 import donateStore from '@/stores/donateStore'
+import statusStore from '@/stores/statusStore'
 
 export default {
   data () {
@@ -201,6 +203,9 @@ export default {
         }
       }
     }
+  },
+  computed: {
+    ...mapState(statusStore, ['isLoading'])
   },
   methods: {
     ...mapActions(donateStore, ['inputDonorData']),
@@ -231,6 +236,33 @@ export default {
           this.form.receipt.address = ''
         }
         this.inputDonorData(this.form)
+        this.form = {
+          donor: {
+            name: '',
+            email: '',
+            tel: '',
+            money: ''
+          },
+          receipt: {
+            needsReceipt: true,
+            title: '',
+            titleChecked: false,
+            id: '',
+            address: ''
+          }
+        }
+      }
+    },
+    receiptChange () {
+      console.log(this.form.receipt.needsReceipt)
+      if (!this.form.receipt.needsReceipt) {
+        this.form.receipt = {
+          needsReceipt: false,
+          title: '',
+          titleChecked: false,
+          id: '',
+          address: ''
+        }
       }
     }
   }

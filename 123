@@ -1,0 +1,34 @@
+{
+            "timing": 1033,
+            "operationId": "PutMultiTouch",
+            "points": [
+                {
+                    "id": 1,
+                    "x": 16880,
+                    "y": 3159,
+                    "state": 1
+                }
+            ]
+        },
+        {
+            "timing": 1038,
+            "operationId": "PutMultiTouch",
+            "points": []
+        },
+        {
+            "timing": 1127,
+            "operationId": "PutMultiTouch",
+            "points": [
+                {
+                    "id": 1,
+                    "x": 16880,
+                    "y": 3159,
+                    "state": 0
+                }
+            ]
+        },
+        {
+            "timing": 1135,
+            "operationId": "PutMultiTouch",
+            "points": []
+        }

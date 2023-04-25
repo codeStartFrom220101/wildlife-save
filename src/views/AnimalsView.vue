@@ -60,7 +60,7 @@ export default {
     ...mapActions(productStore, ['getProducts'])
   },
   created () {
-    this.getProducts(false)
+    this.getProducts()
   }
 }
 </script>

@@ -2,9 +2,6 @@
   <nav class="d-flex justify-content-between align-items-center fixed-top bg-white shadow-sm" style="height: 56px">
     <h1 class="mb-0 fw-bolder"><router-link to="/userboard/home" href="#" class="px-3">動齊來</router-link></h1>
     <ul class="d-md-flex fw-bold list-unstyled mb-0 d-none">
-      <li class="h-100">
-        <a href="#" class="d-block px-4 py-3">登入</a>
-      </li>
       <li class="h-100 bg-secondary">
         <router-link to="/userboard/about" class="text-white text-decoration-none d-block px-4 py-3">關於我們</router-link>
       </li>

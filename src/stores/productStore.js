@@ -8,6 +8,7 @@ export default defineStore('productStore', {
   state: () => ({
     productList: [],
     productCategoryList: [],
+    pagination: {},
     categorys: [],
     categoryNow: '全部商品',
     // 單一產品
@@ -18,14 +19,15 @@ export default defineStore('productStore', {
   }),
   actions: {
     // 產品列表
-    getProducts (whichList) {
+    getProducts (page) {
+      // const witchList = page ? `?page=${page}` : '/all'
       status.isLoading = true
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`
       axios.get(api)
         .then((res) => {
           if (res.data.success) {
             status.isLoading = false
-            if (whichList) {
+            if (page) {
               this.productList = res.data.products.filter(product => product.category !== '動物')
               this.productCategoryList = this.productList
               this.pagination = res.data.pagination

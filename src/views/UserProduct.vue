@@ -1,7 +1,7 @@
 <template>
   <LoadingOverlay :active="isLoading"></LoadingOverlay>
   <div class="container py-6">
-    <div class="row justify-content-center g-3 g-md-5">
+    <div class="row justify-content-center g-3 g-md-5" data-aos="fade-right" data-aos-anchor-placement="top-bottom">
       <div class="col-md-6 col-lg-5" style="height: 500px;">
         <img :src="product.imageUrl" alt="" class="w-100 h-100 object-fit-cover">
       </div>
@@ -74,7 +74,7 @@
     </div>
     <h3 class="h4 text-center mt-md-6 mt-5 similarTitle">為您推薦相似</h3>
     <div class="row row-cols-md-3 row-cols-1 g-3 g-lg-5 mt-3">
-      <div class="col" v-for="(similarProduct) in similarList" :key="similarProduct.id">
+      <div class="col" v-for="(similarProduct, key) in similarList" :key="similarProduct.id"  data-aos="fade-up" data-aos-anchor-placement="top-bottom" :data-aos-delay="`${key * 2}00`" data-aos-duration="1500">
         <div class="card h-100">
           <div class="container-img">
             <img :src="similarProduct.imageUrl" class="card-img-top object-fit-cover" :alt="similarProduct.title" style="height: 200px;">
