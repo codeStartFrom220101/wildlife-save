@@ -1,5 +1,12 @@
 <template>
-  <LoadingOverlay :active="isLoading"></LoadingOverlay>
+  <LoadingOverlay :active="isLoading">
+    <div class="loadingio-spinner-ripple-o01nobacpbk">
+      <div class="ldio-0zlqpdibb6ki">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </LoadingOverlay>
   <div class="text-end mt-2">
     <button class="btn btn-primary" type="button" @click="openModal(true)">新增優惠卷</button>
   </div>

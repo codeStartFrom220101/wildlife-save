@@ -14,16 +14,13 @@
     </ul>
     <ul class="mobile-menu list-unstyled position-absolute bg-white w-100 shadow d-md-none" style="top: 56px" :class="{'active': allStatus.mobileMenu}">
       <li class="border-top border-dark">
-        <router-link to="" class="text-decoration-none d-block px-4 py-2">關於我們</router-link>
+        <router-link to="/userboard/about" class="text-decoration-none d-block px-4 py-2">關於我們</router-link>
       </li>
       <li class="border-top border-dark">
         <router-link to="/userboard/productList" class="text-decoration-none d-block px-4 py-2">產品列表</router-link>
       </li>
       <li class="border-top border-dark">
         <router-link to="/userboard/cartpage/cart" class="text-decoration-none d-block px-4 py-2">購物車</router-link>
-      </li>
-      <li class="border-top border-dark">
-        <a href="#" @click.prevent class="d-block px-4 py-2">登入</a>
       </li>
     </ul>
     <button class="menu-btn d-md-none mx-3" @click="statusToggle('mobileMenu')" :class="{'active': allStatus.mobileMenu}">

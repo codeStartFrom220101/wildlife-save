@@ -1,5 +1,12 @@
 <template>
-  <LoadingOverlay :active="isLoading"></LoadingOverlay>
+  <LoadingOverlay :active="isLoading">
+    <div class="loadingio-spinner-ripple-o01nobacpbk">
+      <div class="ldio-0zlqpdibb6ki">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </LoadingOverlay>
   <div class="container mt-5">
     <form class="row justify-content-center">
       <div class="col-md-6">

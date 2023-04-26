@@ -1,5 +1,12 @@
 <template>
-  <LoadingOverlay :active="isLoading"></LoadingOverlay>
+  <LoadingOverlay :active="isLoading">
+    <div class="loadingio-spinner-ripple-o01nobacpbk">
+      <div class="ldio-0zlqpdibb6ki">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </LoadingOverlay>
   <h2 class="h3 text-black text-center py-2 mb-0">購物車清單</h2>
   <table class="table table-striped mb-0 text-center">
     <thead>

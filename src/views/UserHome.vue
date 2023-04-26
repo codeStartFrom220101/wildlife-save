@@ -3,7 +3,7 @@
   <div class="vh-100"></div>
   <div class="bg-white w-100 py-6">
     <div class="container-md">
-      <section class="">
+      <section>
         <div class="row justify-content-around mx-md-7 g-0">
           <div class="col-lg-3" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="1000">
             <div class="d-flex flex-column align-items-center justify-content-around w-100 text-black" style="height: 300px;">

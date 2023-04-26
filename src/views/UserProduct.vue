@@ -1,5 +1,12 @@
 <template>
-  <LoadingOverlay :active="isLoading"></LoadingOverlay>
+  <LoadingOverlay :active="isLoading">
+    <div class="loadingio-spinner-ripple-o01nobacpbk">
+      <div class="ldio-0zlqpdibb6ki">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </LoadingOverlay>
   <div class="container py-6">
     <div class="row justify-content-center g-3 g-md-5" data-aos="fade-right" data-aos-anchor-placement="top-bottom">
       <div class="col-md-6 col-lg-5" style="height: 500px;">

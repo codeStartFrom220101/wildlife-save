@@ -1,15 +1,22 @@
 <template>
-  <LoadingOverlay :active="isLoading"></LoadingOverlay>
+  <LoadingOverlay :active="isLoading">
+    <div class="loadingio-spinner-ripple-o01nobacpbk">
+      <div class="ldio-0zlqpdibb6ki">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </LoadingOverlay>
   <div class="banner"></div>
   <div class="container py-6">
     <div class="d-flex justify-content-center mb-4" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
       <h2 class="fw-bold border-bottom border-5 pb-2" style="border-color: rgba(240, 156, 30, .5) !important">隨手捐齊來</h2>
     </div>
     <div class="row row-cols-md-2 row-cols-1 g-3 g-md-5 align-items-center">
-      <div class="col" data-aos="fade-right" data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1500">
+      <div class="col" data-aos="fade-right" data-aos-anchor-placement="top-bottom" data-aos-duration="1500">
         <img src="@/assets/briana-tozour-YkdPs_iaCQ8-unsplash.jpg" class="w-100 object-fit-cover" alt="">
       </div>
-      <div class="col" data-aos="fade-left" data-aos-anchor-placement="top-bottom" data-aos-delay="500" data-aos-duration="1500">
+      <div class="col" data-aos="fade-left" data-aos-anchor-placement="top-bottom" data-aos-duration="1500">
         <form class="row g-3 needs-validation" novalidate>
           <!-- 第一部分 -->
           <div class="col-12">

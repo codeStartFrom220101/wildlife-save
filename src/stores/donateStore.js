@@ -14,7 +14,7 @@ export default defineStore('donateStore', {
   actions: {
     inputDonorData (donor) {
       status.isLoading = true
-      const api = 'http://localhost:5000/donors'
+      const api = 'http://localhost:5000/donate'
       axios.post(api, donor)
         .then((res) => {
           if (res.status === 201) {
@@ -26,7 +26,7 @@ export default defineStore('donateStore', {
         })
     },
     getDonateData () {
-      const api = 'http://localhost:5000/donors'
+      const api = 'http://localhost:5000/donate'
       axios.get(api)
         .then(res => {
           console.log(res.data)

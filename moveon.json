@@ -1,5 +1,5 @@
 {
-  "donors": [
+  "donate": [
     {
       "id": 1,
       "donor": {
@@ -543,6 +543,22 @@
         "address": ""
       },
       "id": 34
+    },
+    {
+      "donor": {
+        "name": "不知道為什麼報錯",
+        "email": "why@how",
+        "tel": "123456789",
+        "money": 500
+      },
+      "receipt": {
+        "needsReceipt": false,
+        "title": "",
+        "titleChecked": "",
+        "id": "",
+        "address": ""
+      },
+      "id": 35
     }
   ]
 }
