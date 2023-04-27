@@ -19,22 +19,19 @@ export default defineStore('productStore', {
   }),
   actions: {
     // 產品列表
-    getProducts (page) {
+    getProducts (page = 1) {
       // const witchList = page ? `?page=${page}` : '/all'
       status.isLoading = true
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}`
       axios.get(api)
         .then((res) => {
           if (res.data.success) {
             status.isLoading = false
-            if (page) {
-              this.productList = res.data.products.filter(product => product.category !== '動物')
-              this.productCategoryList = this.productList
-              this.pagination = res.data.pagination
-              this.getCategoryList()
-            } else {
-              this.animalList = res.data.products.filter(product => product.category === '動物')
-            }
+            console.log(res)
+            this.productList = res.data.products
+            this.productCategoryList = this.productList
+            this.pagination = res.data.pagination
+            this.getCategoryList()
           }
         })
     },
@@ -81,6 +78,16 @@ export default defineStore('productStore', {
             this.similarList.push(arr[randomNum[1]])
             this.similarList.push(arr[randomNum[2]])
           }
+        })
+    },
+    getAnimalList () {
+      status.isLoading = true
+      const api = 'http://localhost:5000/animals'
+      axios.get(api)
+        .then(res => {
+          status.isLoading = false
+          console.log(res.data)
+          this.animalList = res.data
         })
     }
   }

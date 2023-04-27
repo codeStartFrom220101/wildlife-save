@@ -64,6 +64,7 @@
       </div>
     </section>
     <CartBtn @del-product="delProductFromCart" :cartList="cartList"></CartBtn>
+  <Pagination :pages="pagination" @emit-pages="getProducts"></Pagination>
   </div>
 </template>
 
@@ -148,6 +149,7 @@ import { mapActions, mapState } from 'pinia'
 import productStore from '@/stores/productStore'
 import cartStore from '@/stores/cartStore'
 import statusStore from '@/stores/statusStore'
+import Pagination from '../components/PaginationC.vue'
 
 export default {
   data () {
@@ -155,7 +157,8 @@ export default {
     }
   },
   components: {
-    CartBtn
+    CartBtn,
+    Pagination
   },
   computed: {
     ...mapState(productStore, ['productCategoryList', 'pagination', 'categorys', 'categoryNow']),
@@ -168,7 +171,7 @@ export default {
     ...mapActions(cartStore, ['getCartData', 'delProductFromCart', 'addToCart'])
   },
   created () {
-    this.getProducts(1)
+    this.getProducts()
     this.getCartData()
   }
 }

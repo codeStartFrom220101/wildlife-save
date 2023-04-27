@@ -1,23 +1,23 @@
 <template>
   <Video ref="video"></Video>
-  <div class="vh-100"></div>
+  <div class="vh-100" @click="crossBanner" style="cursor: pointer;"></div>
   <div class="bg-white w-100 py-6">
     <div class="container-md">
       <section>
         <div class="row justify-content-around mx-md-7 g-0">
-          <div class="col-lg-3" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="1000">
+          <div class="col-lg-3" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
             <div class="d-flex flex-column align-items-center justify-content-around w-100 text-black" style="height: 300px;">
               <div class="endangered-num fw-bolder mb-0 lh-sm" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25); font-size: 100px;">3097</div>
               <div class="endangered-text fs-3 fw-bold" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25);">瀕臨絕種</div>
             </div>
           </div>
-          <div class="col-lg-3" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="1000">
+          <div class="col-lg-3" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
             <div class="d-flex flex-column align-items-center justify-content-around w-100 text-white bg-primary" style="height: 300px;">
               <div class="fw-bolder mb-0 lh-sm" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25); font-size: 100px;">9487</div>
               <div class="fs-3 fw-bold" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25);">捐獻人數</div>
             </div>
           </div>
-          <div class="col-lg-3" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="1000">
+          <div class="col-lg-3" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
             <div class="d-flex flex-column align-items-center justify-content-around w-100 text-black" style="height: 300px;">
               <div class="endangered-num fw-bolder mb-0 lh-sm" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25); font-size: 100px;">520K</div>
               <div class="endangered-text fs-3 fw-bold" style="text-shadow: 3px 5px 5px rgba(0, 0, 0, .25);">商品售出</div>
@@ -27,7 +27,7 @@
       </section>
       <section class="mt-6">
         <div class="row g-0">
-          <div class="col-lg-6" data-aos="fade-right" data-aos-anchor-placement="top-center" data-aos-duration="1000">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
             <div class="row g-0">
               <div class="col-12 bg-secondary" style="height: 320px;">
                 <div class="mx-5 py-5 h-100 d-flex flex-column justify-content-between">
@@ -39,7 +39,7 @@
                         工業成長帶來的全球暖化水源減少</p>
                   </div>
                   <div>
-                    <a href="#" class="btn btn-outline-light">閱讀更多</a>
+                    <a href="https://zh.wikipedia.org/zh-tw/%E7%80%95%E5%8D%B1%E7%89%A9%E7%A8%AE" class="btn btn-outline-light">閱讀更多</a>
                   </div>
                 </div>
               </div>
@@ -51,7 +51,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-anchor-placement="top-center" data-aos-duration="1000">
+          <div class="col-lg-6" data-aos="fade-left" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
             <div class="row flex-column flex-lg-column-reverse g-0">
               <div class="col-12 bg-primary" style="height: 320px;">
                 <div class="mx-5 py-5 h-100 d-flex flex-column justify-content-between">
@@ -62,14 +62,14 @@
                          不只是購買也是幫助</p>
                     </div>
                     <div class="col-4 d-flex align-items-center">
-                      <a href="#" class="btn btn-outline-light text-nowrap">前往購物</a>
+                      <router-link to="/userboard/productList" class="btn btn-outline-light text-nowrap">前往購物</router-link>
                     </div>
                     <div class="col-8 d-flex align-items-center">
                       <p class="mb-0">若您有多餘的心力<br>
                          請參考捐獻</p>
                     </div>
                     <div class="col-4 d-flex align-items-center">
-                      <a href="#" class="btn btn-outline-light text-nowrap">前往捐獻</a>
+                      <router-link to="/userboard/donate" class="btn btn-outline-light text-nowrap">前往捐獻</router-link>
                     </div>
                     <div class="col-8 d-flex align-items-center">
                       <p class="mb-0">照護動物小天使<br>
@@ -91,7 +91,7 @@
         </div>
       </section>
       <section class="d-flex justify-content-center mt-6">
-        <DonateProgress data-aos="fade-down" data-aos-anchor-placement="top-center" data-aos-duration="1000"></DonateProgress>
+        <DonateProgress data-aos="fade-down" data-aos-anchor-placement="top-bottom" data-aos-duration="1000"></DonateProgress>
       </section>
     </div>
   </div>
@@ -167,6 +167,15 @@ export default {
   },
   beforeUnmount () {
     window.removeEventListener('scroll', this.onScroll)
+  },
+  methods: {
+    crossBanner () {
+      window.scrollTo({
+        top: window.screen.height - 200,
+        behavior: 'smooth'
+      })
+      console.log(window.pageYOffset, window.screen.height, window)
+    }
   }
 }
 
