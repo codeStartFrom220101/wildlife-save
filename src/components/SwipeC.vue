@@ -1,6 +1,8 @@
 <template>
-  <swiper :pagination="pagination" :modules="modules" class="mySwiper">
-    <swiper-slide v-for="(item, key) in images" :key="item" class="text-center"><img :src="item" :alt="`第${key + 1}張圖片`" class="h-100"></swiper-slide>
+  <swiper :pagination="pagination" :modules="modules" class="mySwiper h-50">
+    <swiper-slide v-for="(animal, key) in animals" :key="animal" class="text-center d-flex justify-content-center align-items-center border h-100">
+      <img :src="animal.imageUrl" :alt="`第${key + 1}張圖片`" class="h-100">
+    </swiper-slide>
   </swiper>
 </template>
 
@@ -23,7 +25,7 @@ import { Pagination } from 'swiper'
 
 export default {
   props: {
-    images: {
+    animals: {
       type: Array,
       default () { return [] }
     }
