@@ -1,0 +1,1 @@
+input~label{transition:all .3s}input:focus~label,label.active{font-size:.8rem;color:gray;top:5px!important;transform:translateY(0)!important}

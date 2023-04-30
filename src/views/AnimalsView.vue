@@ -45,6 +45,7 @@
       </div>
     </div>
   </div>
+  <Swiper :animals="animalList"></Swiper>
 </template>
 
 <style>
@@ -70,8 +71,11 @@
 import { mapActions, mapState } from 'pinia'
 import productStore from '@/stores/productStore'
 import statusStore from '@/stores/statusStore'
-
+import Swiper from '@/components/SwipeC.vue'
 export default {
+  components: {
+    Swiper
+  },
   computed: {
     ...mapState(productStore, ['animalList']),
     ...mapState(statusStore, ['isLoading'])
