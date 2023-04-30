@@ -1,6 +1,7 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  transpileDependencies: true
+  transpileDependencies: true,
+  publicPath: '/wildlife-save/dist/'
 })
 
 module.exports = {
@@ -9,5 +10,7 @@ module.exports = {
       maxEntrypointSize: 10000000,
       maxAssetSize: 40000000
     }
-  }
+  },
+
+  publicPath: '/wildlife-save/dist/'
 }
