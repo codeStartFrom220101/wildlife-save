@@ -10,33 +10,33 @@
   <div class="container p-6 mt-5">
     <div class="row row-cols-3 g-3 d-none d-md-flex">
       <div class="col">
-        <div class="rounded-4 border overflow-hidden my-3 position-relative animal" :class="{'d-none': key % 3 !== 0}" v-for="(animal, key) in animalList" :key="animal.name">
+        <div class="rounded-4 border overflow-hidden my-3 position-relative animal" :class="{'d-none': key % 3 !== 0}" v-for="(animal, key) in animalList" :key="animal.name" @click="story = animal.story">
           <div class="position-absolute w-100 text-white" style="background-color: rgba(0, 0, 0, 0.3);">
             <h3 class="text-center mb-0 py-1">{{ animal.name }}</h3>
           </div>
-          <img :src="animal.imageUrl" class="w-100" alt="">
+          <img :src="animal.imageUrl" class="w-100" :alt="animal.s">
         </div>
       </div>
       <div class="col">
-        <div class="rounded-4 border overflow-hidden my-3 position-relative animal" :class="{'d-none': key % 3 !== 1}" v-for="(animal, key) in animalList" :key="animal.name">
+        <div class="rounded-4 border overflow-hidden my-3 position-relative animal" :class="{'d-none': key % 3 !== 1}" v-for="(animal, key) in animalList" :key="animal.name" @click="story = animal.story">
           <div class="position-absolute w-100 text-white" style="background-color: rgba(0, 0, 0, 0.3);">
             <h3 class="text-center mb-0 py-1">{{ animal.name }}</h3>
           </div>
-          <img :src="animal.imageUrl" class="w-100" alt="">
+          <img :src="animal.imageUrl" class="w-100" :alt="animal.s">
         </div>
       </div>
       <div class="col">
-        <div class="rounded-4 border overflow-hidden my-3 position-relative animal" :class="{'d-none': key % 3 !== 2}" v-for="(animal, key) in animalList" :key="animal.name">
+        <div class="rounded-4 border overflow-hidden my-3 position-relative animal" :class="{'d-none': key % 3 !== 2}" v-for="(animal, key) in animalList" :key="animal.name" @click="story = animal.story">
           <div class="position-absolute w-100 text-white" style="background-color: rgba(0, 0, 0, 0.3);">
             <h3 class="text-center mb-0 py-1">{{ animal.name }}</h3>
           </div>
-          <img :src="animal.imageUrl" class="w-100" alt="">
+          <img :src="animal.imageUrl" class="w-100" :alt="animal.species">
         </div>
       </div>
     </div>
     <div class="row row-cols-1 d-md-none">
       <div class="col">
-        <div class="rounded-4 border overflow-hidden my-3 position-relative animal" v-for="(animal) in animalList" :key="animal.name">
+        <div class="rounded-4 border overflow-hidden my-3 position-relative animal" v-for="(animal) in animalList" :key="animal.name" @click="story = animal.story">
           <div class="position-absolute w-100 text-white" style="background-color: rgba(0, 0, 0, 0.3);">
             <h3 class="text-center mb-0 py-1">{{ animal.name }}</h3>
           </div>
@@ -45,7 +45,10 @@
       </div>
     </div>
   </div>
-  <Swiper :animals="animalList"></Swiper>
+  <div class="position-fixed bottom-0 w-100 bg-secondary text-white story-container p-md-4 p-2" v-if="story !== ''">
+    <button type="button" class="position-absolute btn btn-outline-secondary rounded-0" style="top: -36px" @click="story = ''">關閉</button>
+    {{ story }}
+  </div>
 </template>
 
 <style>
@@ -71,10 +74,12 @@
 import { mapActions, mapState } from 'pinia'
 import productStore from '@/stores/productStore'
 import statusStore from '@/stores/statusStore'
-import Swiper from '@/components/SwipeC.vue'
+
 export default {
-  components: {
-    Swiper
+  data () {
+    return {
+      story: ''
+    }
   },
   computed: {
     ...mapState(productStore, ['animalList']),

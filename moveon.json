@@ -1,585 +1,25 @@
 {
-  "donate": [
-    {
-      "id": 1,
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 999
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      }
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 123
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 2
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 5000
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 3
-    },
-    {
-      "donor": {
-        "name": "不知道為什麼報錯",
-        "email": "why@how",
-        "tel": "123456789",
-        "money": 505
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 4
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 5
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": true,
-        "title": "沈長昱",
-        "titleChecked": true,
-        "id": "d2132125",
-        "address": "123124"
-      },
-      "id": 6
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 2345
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 7
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": true,
-        "title": "沈長昱",
-        "titleChecked": true,
-        "id": "h123456445",
-        "address": "213135464"
-      },
-      "id": 8
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 9
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 4531
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 10
-    },
-    {
-      "donor": {
-        "name": "不知道為什麼報錯",
-        "email": "why@how",
-        "tel": "123456789",
-        "money": 1500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 11
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 12
-    },
-    {
-      "donor": {
-        "name": "沈裡借",
-        "email": "shenzizi43210@gmail.com",
-        "tel": "+886921111193",
-        "money": 300000
-      },
-      "receipt": {
-        "needsReceipt": true,
-        "title": "沈裡借",
-        "titleChecked": true,
-        "id": "H321123321",
-        "address": "address"
-      },
-      "id": 13
-    },
-    {
-      "donor": {
-        "name": "顯強欲",
-        "email": "shen123456654321@gmail.com",
-        "tel": "012345678",
-        "money": 150000
-      },
-      "receipt": {
-        "needsReceipt": true,
-        "title": "顯強欲",
-        "titleChecked": true,
-        "id": "S321545878",
-        "address": "123124"
-      },
-      "id": 14
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 15
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 12345
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 16
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 17
-    },
-    {
-      "donor": {
-        "name": "不知道為什麼報錯",
-        "email": "why@how",
-        "tel": "123456789",
-        "money": 200
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 18
-    },
-    {
-      "donor": {
-        "name": "沈里介",
-        "email": "shenzizi43@gmail.com",
-        "tel": "+886921818993",
-        "money": 1999
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 19
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 20
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 21
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 22
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 23
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 24
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 25
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 26
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 27
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 28
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 29
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 30
-    },
-    {
-      "donor": {
-        "name": "不知道為什麼報錯",
-        "email": "why@how",
-        "tel": "123456789",
-        "money": 1500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 31
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 32
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 605
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 33
-    },
-    {
-      "donor": {
-        "name": "沈長昱",
-        "email": "shen421226@gmail.com",
-        "tel": "0937081554",
-        "money": 50
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 34
-    },
-    {
-      "donor": {
-        "name": "不知道為什麼報錯",
-        "email": "why@how",
-        "tel": "123456789",
-        "money": 500
-      },
-      "receipt": {
-        "needsReceipt": false,
-        "title": "",
-        "titleChecked": "",
-        "id": "",
-        "address": ""
-      },
-      "id": 35
-    }
-  ],
   "animals": [
     {
       "id": 1,
-      "name": "阿牛",
+      "name": "阿油",
       "species": "犀牛",
-      "imageUrl": "https://i.pinimg.com/564x/5e/b8/af/5eb8af03a98696cbbc03883072290963.jpg"
+      "imageUrl": "https://i.pinimg.com/564x/5e/b8/af/5eb8af03a98696cbbc03883072290963.jpg",
+      "story": "阿牛的兒子，"
     },
     {
       "id": 2,
       "name": "火箭",
       "species": "松貂",
-      "imageUrl": "https://i.pinimg.com/564x/0e/9a/85/0e9a858111db51bdf610cd59c499c6dd.jpg"
+      "imageUrl": "https://i.pinimg.com/564x/0e/9a/85/0e9a858111db51bdf610cd59c499c6dd.jpg",
+      "story": "某天，一隻松貂在森林裡四處覓食，卻不慎踩中了捕獸夾，被困在那裡無法自拔。牠拼命地掙扎，但越是掙扎越是陷得更深。這時候，一位森林裡的遊客經過，聽到松貂的哀嚎聲，便趕緊前來查看。當看到松貂被困住時，遊客感到非常心疼，決定幫牠脫困。遊客發現捕獸夾非常鐵緊地夾住了松貂的腳，需要用力才能打開。他仔細地觀察了捕獸夾的機關，想辦法將其打開，但是始終沒有成功。這時候，另一位遊客經過，看到了松貂的困境，便加入了幫助松貂的行列。兩人一起想辦法，終於找到了一個方法：他們用一個大石頭撐住捕獸夾，再用棍子將其打開，終於成功地讓松貂脫困了！松貂感謝這兩位遊客的幫助，用她溫柔的眼神望著他們，然後轉身向森林深處走去。那兩位遊客也十分開心，因為他們幫助了一隻動物，讓牠能夠繼續在森林裡自由自在地生活。"
     },
     {
       "id": 3,
       "name": "ㄟ妳",
       "species": "企鵝",
       "imageUrl": "https://i.pinimg.com/564x/17/de/b0/17deb0517c2136b00ea1e8a9dfd1d20e.jpg",
-      "story": "在南極洲的一個小島上，有一隻名叫小冰的企鵝。小冰是一隻非常活潑的企鵝，他喜歡游泳、跳躍和探險。但有一天，小冰在跳躍時不小心受傷了，腳蹼出現了裂縫，使他無法像以前那樣游泳和跳躍。其他企鵝看到小冰的情況後非常擔心，他們知道如果小冰不能迅速恢復運動能力，他的生存也會變得困難。於是，他們決定尋求人類的幫助。當地的研究人員聽到了這個消息後，立即前往小島上照顧小冰。他們為小冰的腳蹼做了一個輔助裝置，以便小冰可以繼續活動和獵食。他們還提供了食物和水，確保小冰能夠很好地恢復。經過數周的治療和休養，小冰終於恢復了他的運動能力。他再次成為了島上最活潑的企鵝之一，其他企鵝也非常感激研究人員的幫助。小冰在學會如何使用輔助裝置後，重新開始了探險和游泳，他的朋友們也跟著他一起慶祝著這個勝利。這次救援行動讓小冰和其他企鵝看到了人類的愛心和善良，也讓他們明白到人類和動物之間可以相互幫助和關懷。從此，小冰和其他企鵝對人類產生了更深的信任和感激之情，這種情感也開始在整個南極洲傳播。"
+      "story": "在南極洲的一個小島上，有一隻名叫ㄟ妳的企鵝。ㄟ妳是一隻非常活潑的企鵝，他喜歡游泳、跳躍和探險。但有一天，ㄟ妳在跳躍時不小心受傷了，腳蹼出現了裂縫，使他無法像以前那樣游泳和跳躍。其他企鵝看到ㄟ妳的情況後非常擔心，他們知道如果ㄟ妳不能迅速恢復運動能力，他的生存也會變得困難。於是，他們決定尋求人類的幫助。當地的研究人員聽到了這個消息後，立即前往小島上照顧ㄟ妳。他們為ㄟ妳的腳蹼做了一個輔助裝置，以便ㄟ妳可以繼續活動和獵食。他們還提供了食物和水，確保ㄟ妳能夠很好地恢復。經過數周的治療和休養，ㄟ妳終於恢復了他的運動能力。他再次成為了島上最活潑的企鵝之一，其他企鵝也非常感激研究人員的幫助。ㄟ妳在學會如何使用輔助裝置後，重新開始了探險和游泳，他的朋友們也跟著他一起慶祝著這個勝利。這次救援行動讓ㄟ妳和其他企鵝看到了人類的愛心和善良，也讓他們明白到人類和動物之間可以相互幫助和關懷。從此，ㄟ妳和其他企鵝對人類產生了更深的信任和感激之情，這種情感也開始在整個南極洲傳播。"
     },
     {
       "id": 4,
@@ -592,13 +32,15 @@
       "id": 5,
       "name": "長脖子",
       "species": "長頸鹿",
-      "imageUrl": "https://i.pinimg.com/564x/ab/fd/3d/abfd3d0847bdcc420ac5cec792cdaec5.jpg"
+      "imageUrl": "https://i.pinimg.com/564x/ab/fd/3d/abfd3d0847bdcc420ac5cec792cdaec5.jpg",
+      "story": "有一隻叫做長脖子的小長頸鹿因為腳骨折而不能行走。當他的媽媽無法幫助他時，人類工作人員接手了他的治療和康復工作。他被送往位於肯尼亞的一個野生動物保護區，進行了長達五個月的物理治療和康復計畫。最終，他成功地康復了，可以重新回到野外和他的同伴們一起生活。這個故事彰顯了人類和野生動物之間的合作和保護，讓我們共同守護這個地球上的生物多樣性。"
     },
     {
       "id": 6,
       "name": "胖達",
       "species": "熊貓",
-      "imageUrl": "https://i.pinimg.com/564x/c6/a3/c6/c6a3c68cae7be165cf386658b6463b9d.jpg"
+      "imageUrl": "https://i.pinimg.com/564x/c6/a3/c6/c6a3c68cae7be165cf386658b6463b9d.jpg",
+      "story": "胖達是一隻大熊貓，他曾經在一個偏遠的地方被人不良照顧，身體十分虛弱，體重只有正常體重的一半。當有人發現他時，他已經快要死去了。好心的人們將胖達送到當地的野生動物醫院，但因為他的身體狀況太差，醫生們認為他只有五成的機會能夠活下來。但是，他們還是決定盡力拯救他的生命。醫生們為胖達進行了手術，並照顧他直到他康復。在康復期間，他們還為他提供了適當的食物和照護。終於，在長時間的治療之後，胖達成功康復，體重也漸漸恢復到正常水平。當胖達恢復健康後，醫生們決定將他送回自然界。他們帶著胖達到了一個適合大熊貓生活的地方，並將他放回了自然界。現在，胖達已經恢復了他的健康和幸福，並在自然界中享受著他的自由。這個故事告訴我們，我們應該尊重和保護自然界中的每一個生命。"
     },
     {
       "id": 7,
@@ -618,19 +60,22 @@
       "id": 9,
       "name": "薯餅",
       "species": "短尾矮袋鼠",
-      "imageUrl": "https://i.pinimg.com/564x/50/c9/ea/50c9eaedb360f057b32f3c554acec711.jpg"
+      "imageUrl": "https://i.pinimg.com/564x/50/c9/ea/50c9eaedb360f057b32f3c554acec711.jpg",
+      "story": "有一天，在澳洲的大草原上，一隻名叫薯餅的短尾矮袋鼠被一個捕獸者放置的捕獸網困住了。薯餅掙扎了很久，但是越掙扎越深陷其中，無法自拔。很快，一群當地人經過這裡，發現了袋鼠的困境。他們趕緊拿出工具，打算將袋鼠從捕獸網中解救出來。由於網子的纏繞十分緊密，他們花了很長時間才最終成功地將袋鼠解救出來。當袋鼠脫離了網子，他立刻跳了起來，顯得非常高興。他向拯救他的人類們跳來跳去，彷彿在向他們表示感謝。最後，當袋鼠確定他自己已經安全後，他向人們揮手道別，然後轉身跑回了草原上。人們看著他跑走的身影，感到非常欣慰，知道他們已經幫助了一個生命。"
     },
     {
       "id": 10,
       "name": "快俠",
       "species": "樹懶",
-      "imageUrl": "https://i.pinimg.com/564x/6d/2d/39/6d2d39298c9e1c564ca3e9231a446565.jpg"
+      "imageUrl": "https://i.pinimg.com/564x/6d/2d/39/6d2d39298c9e1c564ca3e9231a446565.jpg",
+      "story": "他是Zootopia的DMV（Department of Mammal Vehicles）辦公室的一名職員。在影片中，主人公小兔朱迪和狐狸尼克為了解決一起案件，需要到DMV註冊處辦理一份文件，而Flash負責處理這個文件。然而，由於他的行動極其緩慢，令人十分焦急，讓朱迪和尼克在辦公室裡等待了很長一段時間。Flash的角色非常幽默，因為他的行動非常緩慢，但他的工作卻是非常重要的。他對待工作非常認真，而且態度極其冷靜，即使是其他角色的催促也不會讓他加快速度。他的表現也讓觀眾忍俊不禁，成為了影片中的一個經典角色。"
     },
     {
       "id": 11,
       "name": "阿油",
       "species": "老虎",
-      "imageUrl": "https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YW5pbWFsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+      "imageUrl": "https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YW5pbWFsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      "story": "在一個潮濕的早晨，阿油是一隻活潑好動的白老虎，它出生在一個大型野生動物保護區，長大後成為了這裡的領袖。然而，這天早上它卻不小心掉進了一個沼澤裡，無法自拔。阿油的吼叫聲引起了保護區工作人員的注意，他們趕來救援。然而，由於沼澤地形複雜且危險，工作人員無法直接進入救援，他們決定從外面開一條渠道，引水入沼澤，以降低水位，讓阿油可以自由行動。為了防止阿油在等待救援期間受傷，工作人員在沼澤邊緣設置了一個臨時營地，並向阿油投擲食物和水，讓它能夠度過困境。幾個小時後，渠道建成了，水位下降了，阿油終於可以爬出沼澤。然而，由於長時間的困境，它已經筋疲力盡，無法動彈。工作人員趕緊將它運送到動物醫院進行治療，經過一段時間的恢復，阿油終於恢復了健康。從此以後，阿油對人類更加信任和友好，它也成為了保護區中的英雄。"
     },
     {
       "id": 11,

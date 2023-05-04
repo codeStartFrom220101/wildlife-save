@@ -5,7 +5,7 @@ import App from './App.vue'
 import router from './router'
 import bootstrap from '../node_modules/bootstrap/dist/js/bootstrap'
 import { createPinia } from 'pinia'
-import AOS from '../node_modules/aos/dist/aos.js'
+import AOS from 'aos/dist/aos.js'
 
 // Import component
 import Loading from 'vue3-loading-overlay'

@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 import statusStore from '@/stores/statusStore'
+import { db } from '@/assets/firebase/firebase'
 
 const status = statusStore()
 
@@ -82,12 +83,10 @@ export default defineStore('productStore', {
     },
     getAnimalList () {
       status.isLoading = true
-      const api = 'http://localhost:5000/animals'
-      axios.get(api)
-        .then(res => {
+      db.ref('/animals').once('value')
+        .then(snapshot => {
           status.isLoading = false
-          console.log(res.data)
-          this.animalList = res.data
+          this.animalList = snapshot.val()
         })
     }
   }

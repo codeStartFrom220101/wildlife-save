@@ -36,7 +36,7 @@
                 <div class="card-body d-flex flex-column">
                   <h5 class="card-title">{{ product.title }} <span class="text-white bg-secondary rounded fs-8 px-1 ms-2">{{ product.category }}</span></h5>
                   <div class="d-flex flex-column justify-content-between h-100">
-                    <p class="card-text mb-1 fs-7">{{ product.description }}</p>
+                    <p class="card-text mb-1 fs-7 overflow-hidden" style="text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{{ product.description }}</p>
                     <p class="card-text text-end ">$NT {{ product.price }}</p>
                   </div>
                 </div>

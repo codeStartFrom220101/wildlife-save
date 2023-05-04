@@ -32,6 +32,7 @@ const routes = [
     children: [
       {
         path: 'home',
+        name: 'home',
         component: () => import('../views/UserHome.vue')
       },
       {

@@ -1,4 +1,12 @@
 <template>
+  <LoadingOverlay :active="isLoading">
+    <div class="loadingio-spinner-ripple-o01nobacpbk">
+      <div class="ldio-0zlqpdibb6ki">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </LoadingOverlay>
   <Video ref="video"></Video>
   <div class="vh-100" @click="crossBanner" style="cursor: pointer;"></div>
   <div class="bg-white w-100 py-6">
@@ -27,7 +35,7 @@
       </section>
       <section class="mt-6">
         <div class="row g-0">
-          <div class="col-lg-6" data-aos="fade-right" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
+          <div class="col-lg-6" :data-aos="myAosRhino" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
             <div class="row g-0">
               <div class="col-12 bg-secondary" style="height: 320px;">
                 <div class="mx-5 py-5 h-100 d-flex flex-column justify-content-between">
@@ -51,7 +59,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
+          <div class="col-lg-6" :data-aos="myAosElephant" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
             <div class="row flex-column flex-lg-column-reverse g-0">
               <div class="col-12 bg-primary" style="height: 320px;">
                 <div class="mx-5 py-5 h-100 d-flex flex-column justify-content-between">
@@ -150,6 +158,8 @@
 <script>
 import Video from '@/components/VideoC.vue'
 import DonateProgress from '@/components/DonateProgress.vue'
+import statusStore from '@/stores/statusStore'
+import { mapActions } from 'pinia'
 
 export default {
   components: {
@@ -160,6 +170,15 @@ export default {
     return {
       scrollY: 0,
       sunsetBPY: 80
+    }
+  },
+  computed: {
+    ...mapActions(statusStore, ['']),
+    myAosRhino () {
+      return window.innerWidth < 768 ? 'fade-up' : 'fade-right'
+    },
+    myAosElephant () {
+      return window.innerWidth < 768 ? 'fade-up' : 'fade-left'
     }
   },
   mounted () {
@@ -174,7 +193,6 @@ export default {
         top: window.screen.height - 200,
         behavior: 'smooth'
       })
-      console.log(window.pageYOffset, window.screen.height, window)
     }
   }
 }

@@ -13,10 +13,10 @@
       <h2 class="fw-bold border-bottom border-5 pb-2" style="border-color: rgba(240, 156, 30, .5) !important">隨手捐齊來</h2>
     </div>
     <div class="row row-cols-md-2 row-cols-1 g-3 g-md-5 align-items-center">
-      <div class="col" data-aos="fade-right" data-aos-anchor-placement="top-bottom" data-aos-duration="1500">
+      <div class="col" :data-aos="myAosLeft" data-aos-anchor-placement="top-bottom" data-aos-duration="1500">
         <img src="@/assets/briana-tozour-YkdPs_iaCQ8-unsplash.jpg" class="w-100 object-fit-cover" alt="">
       </div>
-      <div class="col" data-aos="fade-left" data-aos-anchor-placement="top-bottom" data-aos-duration="1500">
+      <div class="col" :data-aos="myAosRight" data-aos-anchor-placement="top-bottom" data-aos-duration="1500">
         <form class="row g-3 needs-validation" novalidate>
           <!-- 第一部分 -->
           <div class="col-12">
@@ -212,7 +212,13 @@ export default {
     }
   },
   computed: {
-    ...mapState(statusStore, ['isLoading'])
+    ...mapState(statusStore, ['isLoading']),
+    myAosLeft () {
+      return window.innerWidth < 768 ? 'fade-up' : 'fade-right'
+    },
+    myAosRight () {
+      return window.innerWidth < 768 ? 'fade-up' : 'fade-left'
+    }
   },
   methods: {
     ...mapActions(donateStore, ['inputDonorData']),
