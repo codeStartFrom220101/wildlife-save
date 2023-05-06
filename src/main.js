@@ -40,6 +40,7 @@ app.config.globalProperties.$filters = {
 AOS.init()
 const pinia = createPinia()
 
+document.title = '動齊來'
 app.use(VueAxios, axios)
 app.use(router)
 app.use(bootstrap)
