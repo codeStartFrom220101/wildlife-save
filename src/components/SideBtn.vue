@@ -1,8 +1,8 @@
 <template>
-  <div class="position-fixed top-50 translate-middle-y sideBtn-container active" ref="sideBtn">
+  <div class="position-fixed top-50 translate-middle-y sideBtn-container" :class="{'active': sideOpen && openNow === 'side'}" ref="sideBtn">
     <div class="position-relative">
-      <div class="sideBtn-close position-absolute" ref="sideBtnClose" @click="toggleSideBtn(); status.open = !status.open">
-        <button type="button" class="btn-close py-2" aria-label="Close" v-if="status.open === true"></button>
+      <div class="sideBtn-close position-absolute" ref="sideBtnClose" :class="{'active': openNow !== 'side'}" @click="toggleSideBtn">
+        <button type="button" class="btn-close py-2" aria-label="Close" v-if="openNow === 'side'"></button>
         <i class="bi bi-list fs-4 btn-hamburger" v-else></i>
       </div>
       <div class="sideBtn rounded-start-4 bg-secondary mb-5">
@@ -35,7 +35,7 @@
 
 <style scoped>
 .sideBtn-container {
-  z-index: 2;
+  z-index: 100;
   right: -250px;
   transition: all 1s;
 }
@@ -105,18 +105,30 @@
 </style>
 
 <script>
+import { mapActions, mapState } from 'pinia'
+import statusStore from '@/stores/statusStore'
+
 export default {
   data () {
     return {
-      status: {
-        open: true
+      sideOpen: true
+    }
+  },
+  computed: {
+    ...mapState(statusStore, ['openNow'])
+  },
+  watch: {
+    openNow () {
+      if (this.openNow !== 'side') {
+        this.sideOpen = false
       }
     }
   },
   methods: {
+    ...mapActions(statusStore, ['openBtnHandler']),
     toggleSideBtn () {
-      this.$refs.sideBtn.classList.toggle('active')
-      this.$refs.sideBtnClose.classList.toggle('active')
+      this.sideOpen = !this.sideOpen
+      this.sideOpen ? this.openBtnHandler('side') : this.openBtnHandler('')
     }
   }
 }

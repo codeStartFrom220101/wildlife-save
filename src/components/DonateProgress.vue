@@ -4,11 +4,7 @@
     <div class="donate-total" :style="`width: ${donatePercent}`">
       Donate
     </div>
-    <div class="position-absolute end-0 bottom-0 fs-6 text-dark text-end" v-if="myWidth">
-      {{ donate }} / {{ donateTarget }}<br>
-      捐獻金額完程度
-    </div>
-    <div class="position-absolute end-0 top-100 fs-9 text-dark text-end" v-else>
+    <div class="position-absolute end-0 text-dark text-end donate-target">
       {{ donate }} / {{ donateTarget }}<br>
       捐獻金額完程度
     </div>
@@ -26,12 +22,6 @@
     position: relative;
   }
 
-  @media (max-width: 768px) {
-    .donate-progress {
-      font-size: 100px;
-    }
-  }
-
   .donate-total {
     content: "Donate";
     position: absolute;
@@ -43,6 +33,22 @@
     overflow: hidden;
     transition: width 2s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
+
+  .donate-target {
+    font-size: 1rem;
+    bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .donate-progress {
+      font-size: 100px;
+    }
+
+    .donate-target {
+      font-size: .8rem;
+      top: 90%;
+    }
+  }
 </style>
 
 <script>
@@ -51,10 +57,7 @@ import { mapState, mapActions } from 'pinia'
 
 export default {
   computed: {
-    ...mapState(donateStore, ['donatePercent', 'donateTarget', 'donate']),
-    myWidth () {
-      return window.innerWidth > 768
-    }
+    ...mapState(donateStore, ['donatePercent', 'donateTarget', 'donate'])
   },
   methods: {
     ...mapActions(donateStore, ['getDonateData'])

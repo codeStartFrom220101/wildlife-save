@@ -30,6 +30,16 @@
           <div class="row row-cols-1 row-cols-lg-3 g-3 g-md-5">
             <div class="col" v-for="(product, key) in productCategoryList" :key="key">
               <div class="card h-100">
+                {{ product.id }}
+                <div class="position-absolute top-0 end-0 p-2 fs-4" style="z-index: 10; cursor: pointer;" @click="toggleFavList(product)">
+                  <i class="bi bi-heart-fill favBtnOn" v-if="this.favList.findIndex(item => item.id === product.id) !== -1"></i>
+                  <i class="bi bi-heart favBtnOff" v-else></i>
+                </div>
+                <div class="position-absolute w-100" style="height: 200px;" :style="{'z-index: 1': true}">
+                  <div class="position-absolute favAnimate" :ref="`favAnimate`">
+                    <i class="bi bi-heart-fill"></i>
+                  </div>
+                </div>
                 <div class="container-img">
                   <img :src="product.imageUrl" class="card-img-top object-fit-cover" :alt="product.title" style="height: 200px;">
                 </div>
@@ -64,7 +74,8 @@
       </div>
     </section>
     <CartBtn @del-product="delProductFromCart" :cartList="cartList"></CartBtn>
-  <Pagination :pages="pagination" @emit-pages="getProducts"></Pagination>
+    <FavListBtn></FavListBtn>
+    <Pagination :pages="pagination" @emit-pages="getProducts"></Pagination>
   </div>
 </template>
 
@@ -141,10 +152,43 @@
   right: 1rem;
 }
 
+.card .favBtnOff {
+  color: rgb(179, 174, 174);
+}
+
+.card .favBtnOn {
+  color: #FF7575;
+}
+
+.card .favAnimate {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #FF7575;
+  padding: .5rem;
+  font-size: 0;
+  opacity: 0;
+}
+
+.card .favAnimate.on {
+  animation: favBtnAni 1.5s ease;
+}
+
+@keyframes favBtnAni {
+  0% {
+    opacity: 1;
+    font-size: 10rem;
+  }
+  100% {
+    opacity: 0;
+    font-size: 0;
+  }
+}
 </style>
 
 <script>
 import CartBtn from '@/components/CartBtn.vue'
+import FavListBtn from '@/components/FavListBtn.vue'
 import { mapActions, mapState } from 'pinia'
 import productStore from '@/stores/productStore'
 import cartStore from '@/stores/cartStore'
@@ -158,21 +202,23 @@ export default {
   },
   components: {
     CartBtn,
-    Pagination
+    Pagination,
+    FavListBtn
   },
   computed: {
-    ...mapState(productStore, ['productCategoryList', 'pagination', 'categorys', 'categoryNow']),
+    ...mapState(productStore, ['productCategoryList', 'pagination', 'categorys', 'categoryNow', 'favList']),
     ...mapState(cartStore, ['cartList']),
     ...mapState(statusStore, ['isLoading', 'loadingItem'])
   },
   inject: ['pushMessageState', 'emitter'],
   methods: {
-    ...mapActions(productStore, ['getProducts', 'categoryChange']),
+    ...mapActions(productStore, ['getProducts', 'categoryChange', 'toggleFavList', 'getFavList']),
     ...mapActions(cartStore, ['getCartData', 'delProductFromCart', 'addToCart'])
   },
   created () {
     this.getProducts()
     this.getCartData()
+    this.getFavList()
   }
 }
 

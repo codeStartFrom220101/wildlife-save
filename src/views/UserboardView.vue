@@ -2,6 +2,12 @@
   <nav class="d-flex justify-content-between align-items-center fixed-top bg-white shadow-sm" style="height: 56px">
     <h1 class="mb-0 fw-bolder"><router-link to="/userboard/home" href="#" class="px-3">動齊來</router-link></h1>
     <ul class="d-md-flex fw-bold list-unstyled mb-0 d-none">
+      <li class="h-100 bg-white" v-if="!email">
+        <a href="#" class="text-black text-decoration-none d-block px-4 py-3" @click.prevent="loginStatusChange(true)">登入</a>
+      </li>
+      <li class="h-100 bg-white" v-else>
+        <a href="#" class="text-black text-decoration-none d-block px-4 py-3" @click.prevent="logout">登出</a>
+      </li>
       <li class="h-100 bg-secondary">
         <router-link to="/userboard/about" class="text-white text-decoration-none d-block px-4 py-3">關於我們</router-link>
       </li>
@@ -28,7 +34,7 @@
     </button>
   </nav>
   <!-- 主要內容 -->
-  <div>
+  <div class="overflow-hidden">
     <router-view/>
     <ToastMessages></ToastMessages>
   </div>
@@ -71,7 +77,7 @@
       <p class="mb-0" style="font-size: .9rem;">&copy; 2023 LDD製作 此網頁只當作品無提供任何商業用途</p>
     </div>
   </footer>
-
+  <Login v-if="loginStatus"></Login>
   <SideBtn></SideBtn>
 </template>
 
@@ -166,11 +172,16 @@ import emitter from '@/methods/emitter'
 import pushMessageState from '@/methods/pushMessageState'
 import ToastMessages from '@/components/ToastMessages.vue'
 import SideBtn from '@/components/SideBtn.vue'
+import Login from '@/components/LoginC.vue'
+import statusStore from '@/stores/statusStore'
+import loginStore from '@/stores/loginStore'
+import { mapActions, mapState } from 'pinia'
 
 export default {
   components: {
     ToastMessages,
-    SideBtn
+    SideBtn,
+    Login
   },
   data () {
     return {
@@ -187,13 +198,13 @@ export default {
       pushMessageState
     }
   },
-  mounted () {
-    // window.addEventListener('scroll', this.onScroll)
-  },
-  beforeUnmount () {
-    // window.removeEventListener('scroll', this.onScroll)
+  computed: {
+    ...mapState(statusStore, ['loginStatus']),
+    ...mapState(loginStore, ['uid', 'email'])
   },
   methods: {
+    ...mapActions(statusStore, ['loginStatusChange']),
+    ...mapActions(loginStore, ['logout']),
     statusToggle (statusName) {
       this.allStatus[statusName] = !this.allStatus[statusName]
     }

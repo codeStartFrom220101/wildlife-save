@@ -12,6 +12,8 @@ export default defineStore('productStore', {
     pagination: {},
     categorys: [],
     categoryNow: '全部商品',
+    // 願望清單
+    favList: [],
     // 單一產品
     product: {},
     similarList: [],
@@ -28,7 +30,6 @@ export default defineStore('productStore', {
         .then((res) => {
           if (res.data.success) {
             status.isLoading = false
-            console.log(res)
             this.productList = res.data.products
             this.productCategoryList = this.productList
             this.pagination = res.data.pagination
@@ -88,6 +89,24 @@ export default defineStore('productStore', {
           status.isLoading = false
           this.animalList = snapshot.val()
         })
+    },
+    getFavList () {
+      this.favList = JSON.parse(localStorage.getItem('favList')) || []
+    },
+    toggleFavList (product) {
+      const index = this.favList.findIndex(item => item.id === product.id)
+      console.log(this.favList)
+      console.log(product.id)
+      console.log(index)
+      index === -1 ? this.favList.push(product) : this.favList.splice(index, 1)
+      localStorage.setItem('favList', JSON.stringify(this.favList))
+      this.getFavList()
+    },
+    delFromFavList (productId) {
+      const index = this.favList.findIndex(id => id === productId)
+      this.favList.splice(index, 1)
+      localStorage.setItem('favList', JSON.stringify(this.favList))
+      this.getFavList()
     }
   }
 })

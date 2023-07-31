@@ -1,19 +1,19 @@
 <template>
   <div>
-    <div class="cart-btn-container position-fixed rounded-circle bg-white d-flex justify-content-center align-items-center fs-2" style="right: 1rem; bottom: 1rem; width: 60px; height: 60px; z-index: 3;" @click="openCart">
-      <i class="bi bi-cart cart-one" :class="{'d-none': status.cartout}"></i>
-      <i class="bi bi-cart cart-two" ref="cartBtn"></i>
+    <div class="cart-btn-container position-fixed rounded-circle d-flex justify-content-center align-items-center fs-2" style="right: 1rem; bottom: 1rem; width: 60px; height: 60px; z-index: 10; background-color: rgb(237, 237, 237);" @click="openCart">
+      <i class="bi bi-cart cart-one" :class="{'d-none': cartOpen && openNow === 'cart'}"></i>
+      <i class="bi bi-cart cart-two" :class="{'active': cartOpen && openNow === 'cart'}" ref="cartBtn"></i>
       <div class="position-absolute fs-8 rounded-circle bg-primary d-flex justify-content-center align-items-center product-num" ref="productNum">
         <span>{{ cartList.length }}</span>
       </div>
     </div>
-    <div class="position-fixed cart-container rounded" ref="cart">
+    <div class="position-fixed cart-container rounded" :class="{'active': cartOpen && openNow === 'cart'}" ref="cart">
       <div class="card h-100 p-3">
         <div class="d-flex align-items-center justify-content-between border-bottom px-2 pb-2">
           <h4 class="mb-0">購物車清單</h4>
           <button type="button" class="btn-close" aria-label="Close" @click="closeCart"></button>
         </div>
-        <ul class="list-unstyled" style="overflow-y: scroll;">
+        <ul class="list-unstyled p-1" style="overflow-y: scroll;">
           <li class="mt-2" v-for="(product) in cartList" :key="product.id">
             <div class="row g-1 m-0">
               <div class="col-4">
@@ -79,13 +79,13 @@
   }
 
   .cart-container {
-    right: -400px;
+    right: -500px;
     width: 400px;
     height: 500px;
     bottom: 2rem;
     transition: all .5s cubic-bezier(1,-0.24, 0.45, 1.01);
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
-    z-index: 3;
+    z-index: 10;
   }
 
   .cart-container.active {
@@ -111,27 +111,29 @@
 </style>
 
 <script>
+import { mapActions, mapState } from 'pinia'
+import statusStore from '@/stores/statusStore'
+
 export default {
   data () {
     return {
-      status: {
-        cartout: false
-      }
+      cartOpen: false
     }
   },
   props: ['cartList'],
+  computed: {
+    ...mapState(statusStore, ['openNow'])
+  },
   methods: {
+    ...mapActions(statusStore, ['openBtnHandler']),
     openCart () {
-      this.$refs.cartBtn.classList.add('active')
-      this.$refs.cart.classList.add('active')
-      this.$refs.cartBtn.classList.contains('active') ? this.status.cartout = true : this.status.cartout = false
+      this.cartOpen = true
+      this.openBtnHandler('cart')
+      // this.$refs.cartBtn.classList.contains('active') ? this.cartOpen = true : this.cartOpen = false
     },
     closeCart () {
-      this.$refs.cartBtn.classList.remove('active')
-      this.$refs.cart.classList.remove('active')
-      setTimeout(() => {
-        this.status.cartout = false
-      }, 500)
+      this.cartOpen = false
+      this.openBtnHandler('')
     }
   }
 }
