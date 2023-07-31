@@ -159,7 +159,7 @@
 import Video from '@/components/VideoC.vue'
 import DonateProgress from '@/components/DonateProgress.vue'
 import statusStore from '@/stores/statusStore'
-import { mapActions } from 'pinia'
+import { mapState } from 'pinia'
 
 export default {
   components: {
@@ -173,7 +173,7 @@ export default {
     }
   },
   computed: {
-    ...mapActions(statusStore, ['']),
+    ...mapState(statusStore, ['isLoading']),
     myAosRhino () {
       return window.innerWidth < 768 ? 'fade-up' : 'fade-right'
     },

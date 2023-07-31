@@ -30,7 +30,6 @@
           <div class="row row-cols-1 row-cols-lg-3 g-3 g-md-5">
             <div class="col" v-for="(product, key) in productCategoryList" :key="key">
               <div class="card h-100">
-                {{ product.id }}
                 <div class="position-absolute top-0 end-0 p-2 fs-4" style="z-index: 10; cursor: pointer;" @click="toggleFavList(product)">
                   <i class="bi bi-heart-fill favBtnOn" v-if="this.favList.findIndex(item => item.id === product.id) !== -1"></i>
                   <i class="bi bi-heart favBtnOff" v-else></i>
